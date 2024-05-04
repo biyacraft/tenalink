@@ -1,0 +1,29 @@
+{% load static %}
+<html>
+<head>
+    <title>Payment Page</title>
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="mb-4">Payment Page</h1>
+                            <a href="{% url 'payment:home' %}" class="btn btn-primary mb-4">Home</a>
+                            <form action="https://test.yenepay.com/" method="POST">
+                                {% csrf_token %}
+                                {% for x, y in obj.items %}
+                                    <input type="hidden" name="{{ x }}" value="{{ y }}">
+                                {% endfor %}
+                                10.0 ETB
+                                <input type="submit" class="btn btn-success btn-lg btn-block" value="Pay with yenepay">
+                            </form>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

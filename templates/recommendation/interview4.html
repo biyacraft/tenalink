@@ -1,0 +1,149 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block recommend_service %}
+    <div class="container col-6 main my-5 ">
+        <div class="col-lg-12 ">
+            <div class="card bg-success color-white">
+                <h3 class="p-2 text-center text-white">From the symptoms below, please pick one that's you the most</h3>
+            </div>
+        </div>
+        <div class="row  d-flex justify-content-between ">
+            <div class="col-12 col-lg-4 main-text align-item-center ">
+                <div class="image-container text-center">
+                    <img class="img img-fluid " onclick="selectImage('page1.html')" src="{% static 'asset/img/recommend/symptoms/cough men.png' %} " alt=" ">
+                    <p class="text-center">coughing</p>
+                    <input type="checkbox" id="coughing" name="coughing" value="">
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 align-items-center ">
+                <div class="image-container">
+                    <img class="img img-fluid" onclick="selectImage('page2.html')" src="{% static 'asset/img/recommend/symptoms/headache men.png' %} " alt=" ">
+                    <p class="text-center">headache</p>
+                    <input type="checkbox" id="headache" name="headache" value="">
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 align-items-center ">
+                <div class="image-container">
+                    <img class="img img-fluid" onclick="selectImage('page3.html')" src="{% static 'asset/img/recommend/symptoms/vomiting.png' %} " alt=" ">
+                    <p class="text-center">vomiting</p>
+                    <input type="checkbox" id="vomiting" name="vomiting" value="">
+                </div>
+            </div>
+        </div>
+        <div class="row  d-flex justify-content-between ">
+            <div class="col-12 col-lg-4 align-items-center ">
+                <div class="image-container">
+                    <img class="img img-fluid" onclick="selectImage('page4.html')" src="{% static 'asset/img/recommend/symptoms/fatigue.png' %} " alt=" ">
+                    <p class="text-center">fatigue/tired</p>
+                    <input type="checkbox" id="fatigue" name="fatigue" value="">
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 align-items-center ">
+                <div class="image-container">
+                    <img class="img img-fluid" onclick="selectImage('page5.html')" src="{% static 'asset/img/recommend/symptoms/fever.png' %} " alt=" ">
+                    <p class="text-center">fever</p>
+                    <input type="checkbox" id="fever" name="fever" value="">
+                </div>
+            </div>
+
+        </div>
+
+
+        <br>
+        <div class="text-center text-danger" id="message"></div>
+        <div class="container-fluid ">
+            <hr>
+        </div>
+
+        <div class="row  d-flex justify-content-between pr-5">
+            <div class="col-auto">
+                <button id="previousButton" class="btn btn-primary">Prev</button>
+            </div>
+
+            <div class="col-auto">
+                <button id="nextButton" class="btn btn-primary ">Next</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                location.reload();
+            }
+        });
+        var page1 = {
+            clicked: false
+        };
+        var page2 = {
+            clicked: false
+        };
+        var page3 = {
+            clicked: false
+        };
+        var page4 = {
+            clicked: false
+        };
+        var page5 = {
+            clicked: false
+        };
+        var page6 = {
+            clicked: false
+        };
+
+
+        function selectImage(page) {
+            if (page === 'page1.html') {
+                page1.clicked = true;
+                document.getElementById("coughing").checked = true;
+            } else if (page === 'page2.html') {
+                page2.clicked = true;
+                document.getElementById("headache").checked = true;
+            } else if (page === 'page3.html') {
+                page3.clicked = true;
+                document.getElementById("vomiting").checked = true;
+            } else if (page === 'page4.html') {
+                page4.clicked = true;
+                document.getElementById("fatigue").checked = true;
+            } else if (page === 'page5.html') {
+                page5.clicked = true;
+                document.getElementById("fever").checked = true;
+            } else if (page === 'page6.html') {
+                page6.clicked = true;
+            }
+
+            if (page1.clicked || page2.clicked || page3.clicked || page4.clicked || page5.clicked || page6.clicked) {
+                document.getElementById('nextButton').disabled = false;
+            } else {
+                document.getElementById('nextButton').disabled = true;
+            }
+        }
+        var previousButton = document.getElementById('previousButton');
+        previousButton.addEventListener('click', function() {
+            window.location.href = "{% url 'interview3' %}";
+        });
+
+        var nextButton = document.getElementById('nextButton');
+        nextButton.addEventListener('click', function() {
+            if (page1.clicked) {
+                window.location.href = "{% url 'cough_interview1'%}";
+            }
+            if (page2.clicked) {
+                window.location.href = "{% url 'headache_interview1'%}";
+            }
+            if (page3.clicked) {
+                window.location.href = "{% url 'vom_interview'%}";
+            }
+            if (page4.clicked) {
+                window.location.href = "{% url 'interview4'%}";
+            }
+            if (page5.clicked) {
+                window.location.href = "{% url 'fever_interview1'%}";
+            }
+            if (page6.clicked) {
+                window.location.href = "{% url 'interview2'%}";
+            }
+        });
+    </script>
+{% endblock %}

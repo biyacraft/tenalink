@@ -1,0 +1,42 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <title>Payment</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="mb-4">Payment Page</h1>
+                        
+                        <a href="{% url 'home' %}" class="btn btn-primary mb-4">Home</a>
+                        <h3>Payment with yenepay</h3>
+                        <form action="https://test.yenepay.com/" method="POST">
+                            {% csrf_token %}
+                            {% for x, y in obj.items %}
+                                <input type="hidden" name="{{ x }}" value="{{ y }}">
+                            {% endfor %}
+                            {% for s in cart.cartitems %}
+                                {% with sc=forloop.counter0 %}
+                                    {% for i, j in s.items %}
+                                        <input type="hidden" name="Items[{{sc}}].{{i}}" value="{{j}}">
+                                    {% endfor %}
+                                {% endwith %}
+                            {% endfor %}
+                            7180.0 ETB <br><br><br>
+                            <input type="submit"  class="btn btn-primary  btn-lg  mb-4" value="Pay with yenepay">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

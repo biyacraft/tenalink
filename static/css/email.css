@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+h1 {
+    color: #333333;
+}
+p {
+    color: #666666;
+}
+.button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.room-id {
+    font-weight: bold;
+    font-size: 18px;
+    color: #3498db;
+}
+.otp-code {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF0000;
+}

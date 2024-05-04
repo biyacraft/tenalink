@@ -1,0 +1,28 @@
+  .chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Ensure the icon appears on top of other elements */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+    .chat-icon-2 {
+    position: fixed;
+    bottom: 50px;
+    right: 180px;
+    z-index: 9999; /* Ensure the icon appears on top of other elements */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+    .chat-icon-2:hover {
+    transform: scale(1.1); /* Example: increase size on hover */
+  }
+  .chat-icon:hover {
+    transform: scale(1.1); /* Example: increase size on hover */
+  }
+  
+  .icon {
+    width: 60px; /* Adjust the width as needed */
+    height: 60px; /* Adjust the height as needed */
+  }
+  

@@ -1,0 +1,127 @@
+{% extends 'telehakim/index_base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block breadcrumb %}
+login
+{% endblock %}
+
+{% block middle %}
+<div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                    <p class="text-center small">Enter your email & password to login</p>
+                </div>
+                {% if revoke == "email" %}
+                <form method="post" action="" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <label for="yourUsername" class="form-label">Email</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="email" name="email" class="form-control" id="yourUsername"
+                                   placeholder="please enter your email" required>
+                            <div class="invalid-feedback">Your email is used to send a code.</div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" name="email_field" type="submit">Submit</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Don't have account? <a
+                                href="{% url 'account:register-patient' 'index' %}">Create
+                            an account</a></p>
+                    </div>
+                </form>
+                {% elif revoke == "code" %}
+                <form method="post" action="" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <label for="yourUsername" class="form-label">Code</label>
+                        <div class="input-group has-validation">
+                            <input type="text" name="codechar" class="form-control" id="yourUsername"
+                                   placeholder="Enter the code you received" required>
+                            <div class="invalid-feedback">Check your email and finish the process.</div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" name="code" type="submit">Revoke</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Don't have account? <a
+                                href="{% url 'account:register-patient' 'index' %}">Create
+                            an account</a></p>
+                    </div>
+                </form>
+                {% elif revoke == "password" %}
+                <div class="">
+                    <form method="post" action="{% url 'account:update_password_forgot' id reset_req %}">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-md-12 mb-3">
+                                <input name="new_password" type="password" class="form-control"
+                                       placeholder="New Password" minlength="4" required>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12 mb-3">
+                                <input name="renew_password" type="password" class="form-control"
+                                       placeholder="Re-enter New Password" minlength="4" required>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" name="password_update" class="btn btn-primary">Change
+                                Password
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+                {% else %}
+                <form method="post" action="" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %}
+
+                    <div class="col-12">
+                        <label for="yourName" class="form-label">Your Email</label>
+                        <input type="email" name="email" class="form-control" id="yourName" required>
+                        <div class="invalid-feedback">Please, enter your valid email!</div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="yourPassword" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="yourPassword" minlength="4" required>
+                        <div class="invalid-feedback">Please enter your password and more than 4 chars!</div>
+                    </div>
+                    <div class="col-12">
+                        <input class="form-check-input" name="is_doctor" type="checkbox" id="gridCheck1" value="True">
+                        <label class="form-check-label" for="gridCheck1">
+                            Login as a Doctor
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0"><a href="{% url 'account:revoke-new-password' %}?revoke=true">I
+                            forgot my password.</a>
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" name="login" type="submit">Login</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Don't have account? <a
+                                href="{% url 'account:register-patient' 'index' %}">Create
+                            an account</a></p>
+                        <span class="small mb-0"> <a
+                                href="{% url 'account:home_page'%}">go back to home?</a></span>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

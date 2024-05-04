@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tenassist</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'asset/css/font-awesome.min.css' %}">
+    <!-- <link href="{% static 'asset/css/recommendation/bootstrap1.min.css' %}" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'asset/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'asset/css/style.css' %}">
+    <link href="{% static 'asset/css/recommendation/recommend.css'%} " rel="stylesheet">
+    <link href="{% static 'asset/css/recommendation/modified.css'%} " rel="stylesheet">
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!--banner-->
+    <section id="banner" class="banner">
+        <div class="bg-color">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+				        </button>
+                            <a class="navbar-brand" href="#"><img src="{% static 'asset/img/logo.png'%}" class="" style="width: 140px; margin-top: -16px;"></a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class=""><a href="{url 'home_page'}">Home</a></li>
+                                <li class=""><a href="#service">Services</a></li>
+                                <li class=""><a href="#about">About</a></li>
+                                <li class=""><a href="#testimonial">Testimonial</a></li>
+                                <li class=""><a href="#contact">Contact</a></li>
+                                <div id="google_translate_element"></div>
+                                <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                                <script>
+                                    function googleTranslateElementInit() {
+                                        new google.translate.TranslateElement({
+                                                pageLanguage: 'en'
+                                            },
+                                            'google_translate_element'
+                                        );
+                                    }
+                                </script>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </nav>
+        </div>
+    </section>
+    <form method="POST">
+        {% csrf_token %}
+        <h1>Select your Symptoms:</h1>
+        <div class="row d-flex justify-content-between">
+            <div class="col-3">
+                {% for item in symptom1 %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="symptom" value="{{ item }}" id="symptom{{ forloop.counter }}">
+                    <label class="form-check-label" for="symptom{{ forloop.counter }}">{{ item }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-3">
+                {% for item in symptom2 %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="symptom" value="{{ item }}" id="symptom{{ forloop.counter }}">
+                    <label class="form-check-label" for="symptom{{ forloop.counter }}">{{ item }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-3">
+                {% for item in symptom3 %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="symptom" value="{{ item }}" id="symptom{{ forloop.counter }}">
+                    <label class="form-check-label" for="symptom{{ forloop.counter }}">{{ item }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-3">
+                {% for item in symptom4 %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="symptom" value="{{ item }}" id="symptom{{ forloop.counter }}">
+                    <label class="form-check-label" for="symptom{{ forloop.counter }}">{{ item }}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    {% if disease %}
+    <h2>Prediction Result:</h2>
+    <p>{{ disease }}</p>
+    {% endif %}

@@ -1,0 +1,116 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>{% block title %} {% endblock %}| TeleHakim</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/post.jpg' %}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body class="toggle-sidebar" onload="post_none()">
+<div class="page-wrapper ">
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS or message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+            <div class="custom-modal">
+                <div class="succes succes-animation icon-top"><i class="bi bi-check2"></i></div>
+
+                <div class="content">
+                    <p class="message-type text-center small text-success">{{ message }}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="custom-modal">
+                <div class="danger danger-animation icon-top"><i class="bi bi-x-lg"></i></div>
+                <div class="content">
+                    <p class="message-type text-danger">{{ message }}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+<!-- ======= Header ======= -->
+<!--<header id="header" class="header fixed-top d-flex align-items-center">-->
+
+<!--    <div class="d-flex align-items-center justify-content-between">-->
+<!--        <a href="#" class="logo d-flex align-items-center">-->
+<!--            <img src="{% static 'assets/img/post.jpg' %}" alt="">-->
+<!--            <span class="d-none d-lg-block">TELEHAKIM</span>-->
+<!--        </a>-->
+<!--    </div>&lt;!&ndash; End Logo &ndash;&gt;-->
+<!--    <nav class="header-nav ms-auto pe-3">-->
+<!--        <a href="{% url 'account:login' %}" class="btn  btn-outline-dark">Login</a>-->
+<!--        <a href="{% url 'account:register-patient' 'index'%}" class="btn  btn-outline-success" title="For patient use only.">Register</a>-->
+<!--        <a href="{% url 'account:register-doctor' 'index'%}" class="btn  btn-outline-warning" title="For doctor use only.">Register(Dr.)</a>-->
+<!--    </nav>&lt;!&ndash; End Icons Navigation &ndash;&gt;-->
+
+<!--</header>&lt;!&ndash; End Header &ndash;&gt;-->
+
+<main id="main" class="main">
+
+<!--    <div class="pagetitle">-->
+<!--        <h1>Wel-Come Page</h1>-->
+<!--        <nav>-->
+<!--            <ol class="breadcrumb">-->
+<!--                <li class="breadcrumb-item"><a href=" url 'post:index-view'">Home</a></li>-->
+<!--                <li class="breadcrumb-item active">{% block breadcrumb %} {% endblock %}</li>-->
+<!--            </ol>-->
+<!--        </nav>-->
+<!--    </div>&lt;!&ndash; End Page Title &ndash;&gt;-->
+
+    <section class="section">
+        {% block middle %}
+
+        {% endblock %}
+    </section>
+<script>
+    function post_none(){
+        setTimeout( function (){
+            var cm = document.getElementsByClassName('custom-modal')[0];
+            cm.classList.add('post_none');
+        }, 2000);
+    }
+</script>
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<!--<footer id="footer" class="footer">-->
+<!--    <div class="copyright">-->
+<!--        &copy; Copyright <strong><span>TeleHakim System.</span></strong>. All Rights Reserved-->
+<!--    </div>-->
+<!--    <div class="credits">-->
+<!--    </div>-->
+<!--</footer>&lt;!&ndash; End Footer &ndash;&gt;-->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+<script src="{% static 'assets/vendor/tinymce/tinymce.min.js' %}"></script>
+
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+
+</body>
+
+</html>

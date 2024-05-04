@@ -1,0 +1,28 @@
+.content{
+    width: 300px;
+    margin-top: 10%;
+    margin: auto;
+    padding: 0 15px;
+
+}
+
+.vd-flex{
+    display: flex;
+}
+.vd-flex a{
+    text-decoration: none;
+    color: #000;
+    font-family: monospace;
+    font-size: 16px;
+}
+.select#room-id{
+    width: 50%;
+    height: 40px;
+}
+.info{
+    margin-top: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-family: monospace;
+}

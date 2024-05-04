@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+     background-image: url("../image/grain.png");
+}
+.row {
+    max-width: 100% !important;
+}
+
+.row.column {
+    width: 33%;
+}
+section.top-header-img img {
+    border-radius: 0 0 10px 10px;
+}
+
+nav.navbar {
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+section.middle {
+
+    border: 1px solid red;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin img.mb-4 {
+    border-radius: 50%;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    margin: 17px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 3;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+section {
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+section.footer {
+    border-radius: 10px;
+}
+
+section.footer-1 {
+    margin-bottom: 10px;
+}
+
+section.footer-1 .card-body {
+    position: relative;
+    min-width: 100%;
+    padding: 5px 1px !important;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+}
+
+a,
+a:active,
+a:focus {
+    color: #333;
+    text-decoration: none;
+    transition-timing-function: ease-in-out;
+    -ms-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-duration: .2s;
+    -ms-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -o-transition-duration: .2s;
+}
+
+.footer {
+    background: linear-gradient(105deg, #6e99e6, #093c94);
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+    .single_footer {
+        margin-bottom: 30px;
+    }
+}
+
+.single_footer h4 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.single_footer h4::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 40px;
+    background: #fff;
+    margin-top: 20px;
+}
+
+.single_footer p {
+    color: #fff;
+}
+
+.single_footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.single_footer ul li a {
+    color: #fff;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    line-height: 36px;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.single_footer ul li a:hover {
+    color: #ff3666;
+}
+
+.single_footer_address ul li {
+    color: #fff;
+}
+
+.single_footer_address ul li span {
+    font-weight: 400;
+    color: #fff;
+    line-height: 28px;
+}
+
+.contact_social ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+/*START SOCIAL PROFILE CSS*/
+.social_profile {
+    margin-top: 40px;
+}
+
+.social_profile ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+.social_profile ul li {
+    float: left;
+}
+
+.social_profile ul li a {
+    text-align: center;
+    border: 0px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    margin: 0px 5px;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 30px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media only screen and (max-width: 768px) {
+    .social_profile ul li a {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .social_profile ul li a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+.social_profile ul li a:hover {
+    background: #ff3666;
+    border: 1px solid #ff3666;
+    color: #fff;
+    border: 0px;
+}

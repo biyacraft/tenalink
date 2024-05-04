@@ -1,0 +1,16 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/email.css'%}">
+</head>
+<body>
+    <h1>Your Meeting Room ID</h1>
+    <p>Hello, <strong>{{ name }}</strong></p>
+    <p>Your room ID for the meeting is: <span class="room-id fw-bold">{{ room_id }}</span></p>
+    <p>Please use this room ID to join the meeting.</p>
+    <p>Thank you!</p>
+    <p>TeleHakim Service Team</p>
+</body>
+</html>

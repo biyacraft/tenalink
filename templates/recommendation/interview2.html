@@ -1,0 +1,70 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block recommend_service %}
+    <div class="container col-6 main my-5 ">
+        <div class="card bg-success">
+            <h3 class="p-2 text-center text-white">Please select your gender!</h3>
+        </div>
+        <div class="row  d-flex align-items-center ">
+            <div class="col-12 col-md-6 main-text align-item-center ">
+                <div class="image-container text-center">
+                    <img class="img " onclick="selectImage('page1.html')" src="{% static 'asset/img/recommend/male.png' %} " alt=" ">
+                    <p class="text-center">Male</p>
+                    <input type="checkbox" id="male_check" name="male_check" value="">
+                </div>
+            </div>
+            <div class="col-12 col-md-6 align-items-center ">
+                <div class="image-container">
+                    <img class="img " onclick="selectImage('page2.html')" src="{% static 'asset/img/recommend/female.png' %} " alt=" ">
+                    <p class="text-center">Female</p>
+                    <input type="checkbox" id="female_check" name="female_check" value="">
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="text-center text-danger" id="message"></div>
+        <div class="container-fluid ">
+            <hr>
+        </div>
+
+        <div class="col d-flex justify-content-center pr-5 ">
+            <button id="nextButton" class="btn">Next</button>
+        </div>
+    </div>
+    <script>
+        var page1 = {
+            clicked: false
+        };
+        var page2 = {
+            clicked: false
+        };
+
+        function selectImage(page) {
+            if (page === 'page1.html') {
+                document.getElementById("male_check").checked = true;
+                document.getElementById("female_check").checked = false;
+                page1.clicked = true;
+                page2.clicked = false;
+            } else if (page === 'page2.html') {
+                document.getElementById("female_check").checked = true;
+                document.getElementById("male_check").checked = false;
+                page2.clicked = true;
+                 page1.clicked = false;
+            }
+        }
+
+        var nextButton = document.getElementById('nextButton');
+        nextButton.addEventListener('click', function() {
+            if (page1.clicked && page2.clicked) {
+                message.innerText = "Please select one gender only.";
+            }
+            else if (page2.clicked || page1.clicked) {
+                window.location.href = "{% url 'interview3'%}";
+            } else {
+                message.innerText = "Please select your gender!";
+            }
+        });
+    </script>
+{% endblock %}

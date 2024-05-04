@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9 d-flex flex-column align-items-center justify-content-center">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="pt-4 pb-2">
+                            <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                            <p class="text-center small">Enter your personal details to create account</p>
+                        </div>
+                        <form method="post" action="{% if page == 'register_doctor' %}{% url 'account:register-doctor' 'admin' %}{% else %}{% url 'account:register-doctor' 'index' %}{% endif %}"  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="col-md-6">
+                                <label for="{{ doctor_info_form.degree.auto_id }}" class="form-label">Degree</label>
+                                {{ doctor_info_form.degree }}
+                                <div class="invalid-feedback">Please, enter your degree!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_info_form.experience.auto_id }}" class="form-label">Experience in Num.</label>
+                                {{ doctor_info_form.experience }}
+                                <div class="invalid-feedback">Please, enter your Experience in number!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_info_form.fee.auto_id }}" class="form-label">Fee for 1 Hr</label>
+                                {{ doctor_info_form.fee }}
+                                <div class="invalid-feedback">Please enter Fee for 1 Hr online!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_info_form.hospital.auto_id }}" class="form-label">Hospital</label>
+                                {{ doctor_info_form.hospital }}
+                                <div class="invalid-feedback">Please, enter your Hospital you work at!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_info_form.account_number.auto_id }}" class="form-label">CBE Account Number</label>
+                                {{ doctor_info_form.account_number }}
+                                <div class="invalid-feedback">Please, enter your CBE Account Number!</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="{{ doctor_info_form.about.auto_id }}" class="form-label">About your self</label>
+                                {{ doctor_info_form.about }}
+                                <div class="invalid-feedback">Please, Tell me About your self!</div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit">Add to Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9 d-flex flex-column align-items-center justify-content-center">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="pt-4 pb-2">
+                            <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                            <p class="text-center small">Enter your personal details to create account</p>
+                        </div>
+
+                        <form method="post" action="{% if page == 'register_doctor' %}{% url 'account:register-doctor' 'admin' %}{% else %}{% url 'account:register-doctor' 'index' %}{% endif %}"  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="col-md-6">
+                                <label for="{{ doctor_form.first_name.auto_id }}" class="form-label">First Name</label>
+                                {{ doctor_form.first_name }}
+                                <div class="invalid-feedback">Please, enter your First name!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_form.last_name.auto_id }}" class="form-label">Last Name</label>
+                                {{ doctor_form.last_name }}
+                                <div class="invalid-feedback">Please, enter your Last name!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_form.email.auto_id }}" class="form-label">Your Email</label>
+                                {{ doctor_form.email }}
+                                <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_form.specialization.auto_id }}" class="form-label">Speciality</label>
+                                {{ doctor_form.specialization }}
+                                <div class="invalid-feedback">Please, enter your specialization!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_form.phone.auto_id }}" class="form-label">Phone</label>
+                                {{ doctor_form.phone }}
+                                <div class="invalid-feedback">Please, enter your Phone!</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="{{ doctor_form.address.auto_id }}" class="form-label">Your Address</label>
+                                {{ doctor_form.address }}
+                                <div class="invalid-feedback">Please, enter your Address!</div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="{{ doctor_form.date_of_birth.auto_id }}" class="form-label">Date of Birth</label>
+                                {{ doctor_form.date_of_birth }}
+                                <div class="invalid-feedback">Please, enter your Date of Birth in the format of placeholder!</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="{{ doctor_form.password.auto_id }}" class="form-label">Your Password</label>
+                                {{ doctor_form.password }}
+                                <div class="invalid-feedback">Please, enter your Password and more than 4 chars!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_form.document.auto_id }}" class="form-label">Your CV, Licence, Document </label>
+                                {{ doctor_form.document }}
+                                <div class="invalid-feedback">Please, enter your Document!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="{{ doctor_form.photo.auto_id }}" class="form-label">Your Photo</label>
+                                {{ doctor_form.photo }}
+                                <div class="invalid-feedback">Please, enter your Photo!</div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                            </div>
+                            {% if not page == 'register_doctor' %}
+                            <div class="col-12">
+                                <p class="small mb-0">Already have an account? <a href="{% url 'account:login' %}">Log in</a></p>
+                            </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

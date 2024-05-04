@@ -1,0 +1,126 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block recommend_service %}
+    <div class="container  main my-5 py-5">
+        <div class="row d-flex align-items-center">
+            <div class="col-12 col-md-7  main-text align-item-center">
+                <div style="margin: 5px 20px 5px 20px;">
+                    <h2 class="">Terms of service</h2>
+                    <br>
+                    <h6>Before using the checkup, please read the Terms of Service and remember:</h6>
+                </div>
+                <br>
+                <div class="ms-5">
+                    <ul>
+                        <li class="mb-3 "><b>Checkup isn’t a diagnosis.</b> It’s only for your information and not a qualified medical opinion.</li>
+                        <li class="mb-3 "><b>Checkup isn’t for emergencies.</b> Call your local emergency number right away when there’s a health emergency.</li>
+                        <li class=""><b>Your data is safe.</b> The information you give won’t be shared or used to identify you.</li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="col-12 col-md-4  align-items-center">
+                <div>
+                    <img class="img" src="{% static 'asset/img/recommend/terms of service.png' %}" alt="img">
+                </div>
+
+            </div>
+        </div>
+        <!-- start check box -->
+
+        <div class="container agree ms-5 mt-5">
+            <div class="form-group ">
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" id="checkbox1">
+                    <label class="form-check-label" for="checkbox1">
+                            I read and accept
+                            <a id="slideButton1" class="  text-color-primary">Terms of service</a>.
+                  </label>
+                    <div id="message1" class="text-danger"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkbox2">
+                    <label class="form-check-label" for="checkbox2">
+                        I agree for my health information to be used for the interview. More information in the
+                        <a id="slideButton2" class=" color-primary">Privacy Policy</a>
+                        .
+                  </label>
+
+                    <div id="message2" class="text-danger"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+            <hr>
+        </div>
+
+        <div class="col d-flex  justify-content-center pr-5">
+            <button id="nextButton" class="btn">Next</button>
+        </div>
+
+    </div>
+    <script>
+        const checkbox1 = document.getElementById('checkbox1');
+        const checkbox2 = document.getElementById('checkbox2');
+        const message1 = document.getElementById('message1');
+        const message2 = document.getElementById('message2');
+        const nextButton = document.getElementById('nextButton');
+
+        nextButton.addEventListener('click', function() {
+            if (!checkbox1.checked) {
+                message1.innerText = "Please agree to Terms of Service.";
+            } else {
+                message1.innerText = "";
+            }
+
+            if (!checkbox2.checked) {
+                message2.innerText = "Please agree to Privacy Policy and the processing of your health information.";
+            } else {
+                message2.innerText = "";
+            }
+            if (checkbox1.checked && checkbox2.checked) {
+                window.location.href = "{% url 'interview2'%}";
+            }
+        });
+
+        var slideButton1 = document.getElementById('slideButton1');
+        var slider1 = document.getElementById('slider1');
+        var closeButton1 = document.getElementById('closeButton1');
+
+        slideButton1.addEventListener('click', function() {
+            slider1.classList.add('active');
+        });
+
+        closeButton1.addEventListener('click', function() {
+            slider1.classList.remove('active');
+        });
+        document.addEventListener('click', function(event) {
+            if (!slider1.contains(event.target) && event.target !== slideButton1) {
+                slider1.classList.remove('active');
+            }
+        });
+        var slideButton2 = document.getElementById('slideButton2');
+        var slider2 = document.getElementById('slider2');
+        var closeButton2 = document.getElementById('closeButton2');
+
+        slideButton2.addEventListener('click', function() {
+            slider2.classList.add('active');
+        });
+
+        closeButton2.addEventListener('click', function() {
+            slider2.classList.remove('active');
+        });
+        document.addEventListener('click', function(event) {
+            if (!slider2.contains(event.target) && event.target !== slideButton2) {
+                slider2.classList.remove('active');
+            }
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% load static %}
+    <div class="content">
+        <div class="zoom" style="display: flex;">
+            <img src="{% static 'images/tenassist.svg'%}" alt="Image Not Found">
+            <h2>Tenassist Meeting</h2>
+        </div>
+        <div class="select mt-4">
+            <form id="form">
+                {% csrf_token %}
+                <input type="text" class="form-control" name="room_id" placeholder="Enter Room Id" required><br>
+                <input type="hidden"  name="app_id" value="{{app_id}}">
+                <input type="hidden"  name="purpose" value="{{purpose}}">
+                <input type="text" class="form-control" name="name" value="{{ user.first_name }} {{ user.last_name }}" placeholder="Enter placeholder name in the chat"> <br>
+                <input type="submit" class="form-control btn btn-primary" value="Join">
+            </form>
+        </div>
+    </div>
+<script>
+    let form = document.getElementById('form')
+    let handleSubmit = async (e) => {
+        e.preventDefault()
+
+        let room = e.target.room_id.value
+        let name = e.target.name.value
+        let app_id = e.target.app_id.value
+        let purpose = e.target.purpose.value
+
+        let response = await fetch(`/chat/get_token/?channel=${room}`)
+        let data = await response.json()
+
+        sessionStorage.setItem('name', name)
+        sessionStorage.setItem('room', room)
+        sessionStorage.setItem('uid', data.uid)
+        sessionStorage.setItem('token', data.token)
+        sessionStorage.setItem('app_id', app_id)
+        sessionStorage.setItem('purpose', purpose)
+
+        window.open('/dashboard/{{ user_role }}/?pages=chatting', '_blank')
+    }
+    form.addEventListener('submit', handleSubmit)
+</script>

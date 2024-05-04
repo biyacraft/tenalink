@@ -1,0 +1,131 @@
+body {
+    background-color: #f3f5f7;
+    color: black;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+form {
+    margin: 50px 50px;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ce3c3c;
+}
+
+.check {
+    margin-right: 20px;
+}
+
+input[type="submit"] {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #3E8E41;
+}
+
+.main {
+    background-color: #e7e1e1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ffffff;
+    margin-top: 20px;
+}
+
+.main-text {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 50;
+    height: 50;
+}
+
+#slider1,
+#slider2 {
+    position: fixed;
+    top: 0;
+    right: -50%;
+    width: 50%;
+    height: 100%;
+    background-color: #0cb8b6;
+    transition: right 0.5s ease-in-out;
+    z-index: 9999;
+}
+
+#slider1.active,
+#slider2.active {
+    right: 0;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.image-container img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.image-container:hover {
+    transform: scale(1.05);
+    background-color: #f3f5f7;
+}
+
+.image-container::after {
+    background-color: #e77f7f;
+}
+
+.btn-1 {
+    background: #5bc0de;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    line-height: 40px;
+    padding: 0 20px;
+    margin-right: 10px;
+    transition: all ease-in-out 0.3s;
+    -webkit-transition: all ease-in-out 0.3s;
+    text-decoration: none;
+}
+
+.btn-1:hover {
+    background: #2c5b69;
+    color: #fff;
+    text-decoration: none;
+}
+
+body a:hover {
+    text-decoration: none;
+}
+
+hr {
+    background-color: black;
+    height: 3px;
+}
+
+color-change-image {
+    background-color: #0cb8b6;
+}
