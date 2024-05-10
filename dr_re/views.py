@@ -105,7 +105,7 @@ def recommend(request):
         else:
             # disease = ll[predictions.tolist()[0]]
 
-            ml_model = joblib.load("../TELEHAKIM/dr_re/ml_model/ml_model_whole.joblib")
+            ml_model = joblib.load("../TENASSIST1/dr_re/ml_model/ml_model_whole.joblib")
             # predictions = ml_model.predict  (pd.DataFrame(l))
             predictions = ml_model.predict(l)
 

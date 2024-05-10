@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-app_name = 'telehakim'
+app_name = 'tenassist'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('payment/', include('payment.urls')),

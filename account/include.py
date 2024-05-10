@@ -39,9 +39,9 @@ class EmailThread(Thread):
         html_content = render_to_string(self.link, self.context)
         text_content = strip_tags(html_content)
         email = EmailMultiAlternatives(
-            'TeleHakim System',
+            'Tenassist System',
             text_content,
-            'mesaye2010@gmail.com',
+            'ayalkbettesfahun@gmail.com',
             [self.email_to],
         )
         email.attach_alternative(html_content, "text/html")
@@ -56,9 +56,9 @@ def send_email(link, to, content):
         html_content = render_to_string(link, content)
         text_content = strip_tags(html_content)
         email = EmailMultiAlternatives(
-            'TeleHakim System',
+            'Tenassist System',
             text_content,
-            'mesaye2010@gmail.com',
+            'ayalkbettesfahun@gmail.com',
             to,
         )
         email.attach_alternative(html_content, "text/html")

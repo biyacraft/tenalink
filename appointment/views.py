@@ -15,7 +15,7 @@ from account.models import Patient, Doctor
 
 
 def test(request):
-    des = EmailThread('email/appointment_reminder.html', "mesaye2010@gmail.com", {'name': 'Test-Name', 'otp_code': 8345}).start()
+    des = EmailThread('email/appointment_reminder.html', "ayalkbettesfahun@gmail.com", {'name': 'Test-Name', 'otp_code': 8345}).start()
     print(des)
     return JsonResponse({'token': 'adfasd', 'uid': 'sdfs'}, safe=False)
 

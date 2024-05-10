@@ -40,7 +40,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Telehakim.urls'
+ROOT_URLCONF = 'Tenassist.urls'
 
 TEMPLATES = [
     {
@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Telehakim.wsgi.application'
+WSGI_APPLICATION = 'Tenassist.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -70,10 +70,10 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mesaye2010@gmail.com'
+EMAIL_HOST_USER = 'ayalkbettesfahun@gmail.com'
 EMAIL_HOST_PASSWORD = 'vpajumtxbwwgtpbt'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'mesaye2010@gmail.com'
+DEFAULT_FROM_EMAIL = 'ayalkbettesfahun@gmail.com'
 
 
 AUTH_PASSWORD_VALIDATORS = [

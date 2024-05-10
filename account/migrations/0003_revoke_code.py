@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='revoke',
             name='code',
-            field=models.CharField(blank=True, default='TeleHakim:jOvdf', max_length=15),
+            field=models.CharField(blank=True, default='Tenassist:jOvdf', max_length=15),
         ),
     ]

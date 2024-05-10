@@ -1,4 +1,4 @@
-{% extends 'telehakim/main_base.html' %}
+{% extends 'tenassist/main_base.html' %}
 
 {% block title %}
     Admin
@@ -555,13 +555,13 @@
         </div></div>
       <!-- end view feedback -->
     {% elif page == 'register_patient' %}
-        {% include 'telehakim/partials/patient_form.html' %}
+        {% include 'tenassist/partials/patient_form.html' %}
     {% elif page == 'register_admin' %}
-        {% include 'telehakim/partials/patient_form.html' %}
+        {% include 'tenassist/partials/patient_form.html' %}
     {% elif page == 'register_doctor' %}
-        {% include 'telehakim/partials/doctor_form.html' %}
+        {% include 'tenassist/partials/doctor_form.html' %}
     {% elif page == 'profile' %}
-        {% include 'telehakim/partials/profile.html' %}
+        {% include 'tenassist/partials/profile.html' %}
     {% else %}
       <!-- Start Data table -->
        <div class="our-custom-model card m-auto d-none">

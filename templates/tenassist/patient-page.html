@@ -1,4 +1,4 @@
-{% extends 'telehakim/main_base.html' %}
+{% extends 'tenassist/main_base.html' %}
 
 {% block title %}
 Patient
@@ -338,7 +338,7 @@ medical-history
     </div>
 </div>
 {% elif page == 'profile' %}
-    {% include 'telehakim/partials/profile.html' %}
+    {% include 'tenassist/partials/profile.html' %}
 {% else %}
 {% load mathfilters %}
 <!-- Start Data table -->
@@ -353,7 +353,7 @@ medical-history
                 <form action="" method="post">
                     {% csrf_token %}
                     <div>
-                        <input type="hidden" id="input_id" name="email" value="mesaye2010@gmail.com">
+                        <input type="hidden" id="input_id" name="email" value="ayalkbettesfahun@gmail.com">
                         <label for="customRange2" class="form-label">Min and max with steps <span
                                 class="badge bg-primary fs-6" id="rangeValue">5</span></label>
                         <input type="range" name="range" class="form-range" min="0" max="10" step="1"

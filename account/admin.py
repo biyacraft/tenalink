@@ -8,6 +8,6 @@ admin.site.register(Patient)
 admin.site.register(Doctor)
 admin.site.register(Revoke)
 
-admin.site.site_header = "TeleHakim Super Admin"
-admin.site.site_title = "TeleHakim SuperAdmin Portal"
-admin.site.index_title = "TeleHakim Super Admin"
+admin.site.site_header = "Tenassist Super Admin"
+admin.site.site_title = "Tenassist SuperAdmin Portal"
+admin.site.index_title = "Tenassist Super Admin"
