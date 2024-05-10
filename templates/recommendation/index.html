@@ -81,8 +81,8 @@
     <section class="popupBody">
 
             <div class="action_btns d-inline">
-                <a href="{% url 'account:register-patient' 'index' %}" class="btn">Register(User)</a>
-                <a href="{% url 'account:register-doctor' 'index' %}" class="btn">Register(Dr.)</a>
+                <a href="{% url 'account:register-patient' 'index' %}" class="btn">Register(As a User)</a>
+                <a href="{% url 'account:register-doctor' 'index' %}" class="btn">Register(As a Doctor)</a>
             </div>
 
     </section>
@@ -140,6 +140,7 @@
     </div>
     <div class="container">
       <div class="row">
+
         <div class="col-lg-3">
           <div class="service-item first-service">
             <div class="icon"></div>
@@ -151,10 +152,11 @@
             </div>
           </div>
         </div>
+
         <div class="col-lg-3">
           <div class="service-item second-service">
             <div class="icon"></div>
-            <h4>Video &amp; Audio Chat</h4>
+            <h4>Video &amp; chat</h4>
             <p>Our platform facilitates video and audio consultations between patients and doctors.</p>
             <div class="text-button"><br>
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
@@ -164,7 +166,7 @@
         <div class="col-lg-3">
           <div class="service-item third-service">
             <div class="icon"></div>
-            <h4>Premium services</h4>
+            <h4>Audio Chat</h4>
             <p>It leverages patient data for ongoing AI training, functioning as a dataset, 
               and includes a chatbot.</p>
             <div class="text-button">
@@ -255,11 +257,11 @@
             
             <h4>Neurologist</h4>
             <div class="">
-              <img src="{% static 'land/assets/images/1.png' %}" alt="">
+              <img src="{% static 'land/assets/images/jibril-adem.png' %}" alt="">
             </div>
             <ul>
-              <li>Working on Black Lion </li>
-              <li>7 years of Exp</li>
+              <li>Working on Jimma University Specialized Hospital </li>
+              <li>4 years of Exp</li>
               <li><a href="">See all timings.</a></li>
               <div class="rating">
                 <input type="radio" name="rating" id="star5" class="d-none">
@@ -280,7 +282,7 @@
            
             </ul>
             <div class="border-button">
-              <a href="#">Appointment</a>
+              <a href="{% url 'account:register-patient' 'index' %}">Appointment</a>
             </div>
           </div>
         </div>
@@ -290,10 +292,10 @@
             
             <h4>Neurologist</h4>
             <div class="">
-              <img src="{% static 'land/assets/images/3.png' %}" alt="">
+              <img src="{% static 'land/assets/images/Dinaol-Dinegde.png' %}" alt="">
             </div>
             <ul>
-              <li>Working on Addis Ababa University </li>
+              <li>Working on Jimma University </li>
               <li>5 years of Exp</li>
               <li><a href="">See all timings.</a></li>
               <div class="rating">
@@ -314,7 +316,7 @@
               </div>
             </ul>
             <div class="border-button">
-              <a href="#">Appointment</a>
+              <a href="{% url 'account:register-patient' 'index' %}">Appointment</a>
             </div>
           </div>
         </div>
@@ -323,11 +325,11 @@
           
             <h4>orthodentist</h4>
             <div class="">
-              <img src="{% static 'land/assets/images/2.png' %}" alt="">
+              <img src="{% static 'land/assets/images/selamawit-gashaw.png' %}" alt="">
             </div>
             <ul>
-              <li>Working on Poulos Hospital </li>
-              <li>5 years of Exp</li>
+              <li>Working on Jimma University Specialized Hospital</li>
+              <li>4 years of Exp</li>
               <li><a href="">See all timings.</a></li>
               <div class="rating">
                 <input type="radio" name="rating" id="star5" class="d-none">
@@ -347,7 +349,7 @@
               </div>
             </ul>
             <div class="border-button">
-              <a href="#">Appointment</a>
+              <a href="{% url 'account:register-patient' 'index' %}">Appointment</a>
             </div>
           </div>
         </div>
@@ -394,7 +396,6 @@
           <div class="footer-widget">
             <h4>Useful Links</h4>
             <ul>
-              <li><a href="https://a2sv.org/">A2SV</a></li>
               <li><a href="https://ethio-health.com/">EthioHealth</a></li>
               <li><a href="https://www.dst.gov.za/index.php/about-us/ministers-office">Health Minster</a></li>
               
@@ -406,15 +407,11 @@
         
         <div class="col-lg-3">
           <div class="footer-widget">
-            
             <p>Privacy </p>
             <p>Security </p>
-            
-            
           </div>
           
         </div>
-
         <div class="col-lg-3">
           <div class="footer-widget">
             <h4>About Us</h4>
