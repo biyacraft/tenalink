@@ -11,19 +11,19 @@ Doctor
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}">
-                <i class="bi bi-grid"></i>
+                <i class="bi bi-menu-app"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=working_day">
-                <i class="bi bi-clock-fill"></i><span>Working Day</span>
+                <i class="bi bi-calendar-check"></i></i><span>Working Day</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=view_rate">
-                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
                 <span>View Rate</span>
             </a>
         </li>
@@ -37,7 +37,7 @@ Doctor
         {% endif %}
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=remove_day">
-                <i class="bi bi-trash-fill"></i>
+                <i class="bi bi-trash"></i>
                 <span>Remove Work Dy</span>
             </a>
         </li>
