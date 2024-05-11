@@ -272,3 +272,5 @@ def fever_result(request):
     key_value = request.GET.get('key')
     print(key_value)
     return render(request, "recommendation/fever/fever_result.html", {'result': key_value})
+
+
