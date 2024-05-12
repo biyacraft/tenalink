@@ -104,7 +104,7 @@ header, nav, section, article, aside, footer, hgroup {
 html, body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  background-color: #fff;
+  background-color: #F2FBFC;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1568,8 +1568,7 @@ Free Quote
 ---------------------------------------------
 Footer Style
 --------------------------------------------- 
-*/
-
+*/ /*
 footer {
   background-image: url(../images/footer-bg.png);
   background-position: center top;
