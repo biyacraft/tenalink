@@ -8,8 +8,8 @@ Patient
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{% url 'dashboard:patient-dashboard' %}">
-                <i class="bi bi-menu-app-fill"></i>
+            <a class="nav-link collapsed"  href="{% url 'dashboard:patient-dashboard' %}">
+                <i class="bi bi-menu-button" onclick=toggleIcon()></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
@@ -45,7 +45,7 @@ Patient
             </a>
         </li>
     </ul>
-
+    
 </aside><!-- End Sidebar-->
 {% endblock %}
 
