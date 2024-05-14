@@ -148,6 +148,8 @@ body {
 .section-heading {
   position: relative;
   z-index: 2;
+  padding-top: 10px;
+  margin-top: 100px;
 }
 
 .section-heading h4 {
@@ -155,7 +157,7 @@ body {
   font-size: 30px;
   font-weight: 700;
   text-transform: capitalize;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .section-heading h4 em {
@@ -220,8 +222,8 @@ body {
   color: #fff !important;
   text-transform: capitalize;
   font-size: 15px;
-  background: rgb(19,175,240);
-  background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%);
+  background: #04A7C3;
+  background: linear-gradient(105deg, #04A7C3 0%, rgba(40,225,253,1) 100%);
   border-radius: 23px;
   font-weight: 500 !important;
   letter-spacing: 0.3px !important;
@@ -230,8 +232,8 @@ body {
 
 .gradient-button a:hover {
   color: #fff !important;
-  background: rgb(19,175,240);
-  background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%);
+  background: #04A7C3;
+  background: linear-gradient(105deg, #04A7C3 0%, rgba(40,225,253,1) 100%);
 }
 
 .border-button a {
@@ -870,11 +872,12 @@ Banner Style
   padding: 250px 120px 150px 120px;
   position: relative;
   overflow: hidden;
+  background-image: url(../images/hero-bg.svg);
 }
 
 .main-banner:after {
   content: '';
-  background-image: url(../images/slider-left-dec.png);
+  background-image: url(../images/hero-bg.svg);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -934,12 +937,12 @@ Services Style
 */
 
 .services {
-  padding-top: 130px;
+  padding-top: 10px;
   position: relative;
 }
 
 .services  .section-heading p {
-  margin-top: 10px;
+  margin-top: 0px;
   margin-left: 18%;
   margin-right: 18%;
 }
@@ -1531,7 +1534,7 @@ Free Quote
   outline: none;
   border: none;
   margin-left: 30px;
-  background-color: #726ae3;
+  background-color: #04A7C3;
   font-size: 15px;
   color: #fff;
 }
@@ -1773,7 +1776,7 @@ a.btn_red {
   
   padding: 5px 10px;
   margin-right: 10px;
-  float: left;
+  float:left;
   color: #FFF;
   font-size: 16px;
   text-align: center;
