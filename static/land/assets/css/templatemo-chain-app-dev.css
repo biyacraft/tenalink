@@ -5,34 +5,6 @@ TemplateMo 570 Chain App Dev
 https://templatemo.com/tm-570-chain-app-dev
 
 */
-
-/* ---------------------------------------------
-Table of contents
-------------------------------------------------
-01. font & reset css
-02. reset
-03. global styles
-04. header
-05. banner
-06. features
-07. testimonials
-08. contact
-09. footer
-10. preloader
-11. search
-12. portfolio
-
---------------------------------------------- */
-/* 
----------------------------------------------
-font & reset css
---------------------------------------------- 
-*/
-/* 
----------------------------------------------
-reset
---------------------------------------------- 
-*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -117,6 +89,7 @@ a {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
+  color: #04A7C3;
 }
 
 ul {
@@ -142,18 +115,18 @@ global styles
 */
 html,
 body {
-  background: #fff;
+  background: #F2FBFC;
   font-family: 'Roboto', sans-serif;
 }
 
 ::selection {
-  background: #4b8ef1;
-  color: #fff !important;
+  background: #04A7C3;
+  color: #F2FBFC !important;
 }
 
 ::-moz-selection {
-  background: #4b8ef1;
-  color: #fff !important;
+  background: #04A7C3;
+  color: #F2FBFC !important;
 }
 
 @media (max-width: 991px) {
@@ -187,7 +160,7 @@ body {
 
 .section-heading h4 em {
   font-style: normal;
-  color: #4b8ef1;
+  color: #04A7C3;
 }
 
 .section-heading img {
@@ -207,7 +180,7 @@ body {
 .white-button a {
   display: inline-block !important;
   padding: 10px 20px !important;
-  color: #4b8ef1 !important;
+  color: #04A7C3 !important;
   text-transform: capitalize;
   font-size: 15px;
   background-color: #fff;
@@ -223,7 +196,7 @@ body {
 }
 
 .white-button a:hover {
-  background-color: #4b8ef1;
+  background-color: #04A7C3;
   color: #fff !important;
 }
 
@@ -264,8 +237,8 @@ body {
 .border-button a {
   display: inline-block !important;
   padding: 10px 20px !important;
-  color: #4b8ef1 !important;
-  border: 1px solid #4b8ef1;
+  color: #04A7C3 !important;
+  border: 1px solid #04A7C3;
   text-transform: capitalize;
   font-size: 15px;
   display: inline-block;
@@ -277,7 +250,7 @@ body {
 }
 
 .border-button a:hover {
-  background-color: #4b8ef1;
+  background-color: #04A7C3;
   color: #fff !important;
 }
 
@@ -305,7 +278,7 @@ header
 }
 
 .background-header .main-nav .nav li:hover a {
-  color: #4b8ef1;
+  color: #04A7C3;
 }
 
 .background-header .nav li a.active {
@@ -317,7 +290,7 @@ header
   position: absolute;
   width: 100%;
   height: 1px;
-  background-color: #4b8ef1;
+  background-color: #04A7C3;
   content: '';
   left: 50%;
   bottom: -20px;
@@ -428,7 +401,7 @@ header
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #4b8ef1!important;
+  color: #04A7C3!important;
 }
 
 .header-area .main-nav .nav li:last-child a.active {
@@ -437,7 +410,7 @@ header
 
 .background-header .main-nav .nav li:hover a,
 .background-header .main-nav .nav li a.active {
-  color: #4b8ef1!important;
+  color: #04A7C3!important;
   opacity: 1;
 }
 
@@ -499,7 +472,7 @@ header
 
 .header-area .main-nav .nav li.submenu ul li a:hover {
   background: #fff;
-  color: #4b8ef1!important;
+  color: #04A7C3!important;
   padding-left: 25px;
 }
 
@@ -639,7 +612,7 @@ header
 }
 
 .header-area.header-sticky .nav li a.active {
-  color: #4b8ef1;
+  color: #04A7C3;
 }
 
 @media (max-width: 1200px) {
@@ -679,7 +652,7 @@ header
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: #4b8ef1!important;
+    color: #04A7C3!important;
     opacity: 1;
   }
   .header-area.header-sticky .nav li.search-icon a {
@@ -741,7 +714,7 @@ header
   }
   .header-area .main-nav .nav li a:hover {
     background: #eee !important;
-    color: #4b8ef1!important;
+    color: #04A7C3!important;
   }
   .header-area .main-nav .nav li.submenu ul {
     position: relative;
@@ -855,7 +828,7 @@ preloader
     height: 16px;
     top: 12px;
     left: 15px;
-    background: #4b8ef1;
+    background: #04A7C3;
     border-radius: 50%;
     -webkit-transform: translateX(0);
     transform: translateX(0);
@@ -878,7 +851,7 @@ preloader
     width: 16px;
     height: 16px;
     margin-left: 16px;
-    background: #4b8ef1;
+    background: #04A7C3;
     border-radius: 50%;
 }
 
@@ -950,7 +923,7 @@ Banner Style
 }
 
 .main-banner .left-content .white-button a {
-  background-color: #4b8ef1;
+  background-color: #04A7C3;
   color: #fff !important;
 }
 
@@ -1135,7 +1108,7 @@ About Us
 }
 
 .about-us .box-item:hover h4 a {
-  color: #4b8ef1;
+  color: #04A7C3;
 }
 
 .about-us .gradient-button {
@@ -1154,7 +1127,7 @@ About Us
 }
 
 .about-us:after {
-  background-image: url(../images/about-bg.jpg);
+
   width: 777px;
   height: 1132px;
   content: '';
@@ -1231,7 +1204,7 @@ The Clients
 .the-clients .naccs .menu div.active i,
 .the-clients .naccs .menu div.active span.rating,
 .the-clients .naccs .menu div.active .thumb {
-  color: #4b8ef1;
+  color: #04A7C3;
 }
 
 .the-clients ul.nacc {
@@ -1390,7 +1363,7 @@ The Clients
 }
 
 .pricing-item-regular ul li {
-  color: #4b8ef1;
+  color: #04A7C3;
   font-size: 15px;
   margin-bottom: 15px;
 }
@@ -1467,7 +1440,7 @@ The Clients
 }
 
 .pricing-item-pro ul li {
-  color: #4b8ef1;
+  color: #04A7C3;
   font-size: 15px;
   margin-bottom: 15px;
 }
@@ -1717,13 +1690,13 @@ PopUp
 
 .btn {
   padding: 10px 20px;
-  background: #4b8ef1;
+  background: #04A7C3;
   color: #fff;
   transition: all .3s;
 }
 
 .btn_red {
-  background: #4b8ef1;
+  background: #04A7C3;
   color: #FFF;
 }
 
@@ -1776,7 +1749,7 @@ a.btn_red {
   right: 0;
   top: 0;
   padding: 10px 15px;
-  background: #4b8ef1;
+  background: #04A7C3;
   cursor: pointer;
   color: #fff;
   font-size: 16px;
@@ -1892,7 +1865,7 @@ a.btn_red {
   clear: both;
   overflow: hidden;
   text-decoration: none;
-  color: #4b8ef1;
+  color: #04A7C3;
   transition: all .3s;
 }
 /* User Register Form */
@@ -1987,7 +1960,7 @@ responsive
     margin-right: 0;
   }
   .main-banner .left-content .white-button a {
-    background-color: #4b8ef1;
+    background-color: #04A7C3;
     color: #fff !important;
   }
   form#contact {
@@ -2113,7 +2086,7 @@ responsive
   }
   footer #search button {
     background-color: #fff;
-    color: #4b8ef1;
+    color: #04A7C3;
   }
   footer #search input::placeholder { 
     color: #2a2a2a;

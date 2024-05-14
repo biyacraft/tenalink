@@ -20,11 +20,9 @@
     <link rel="stylesheet" href="{% static 'land/assets/css/animated.css' %}">
     <link rel="stylesheet" href="{% static 'land/assets/css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'land/assets/css/style.css' %}">
-
   </head>
 
 <body>
-
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
@@ -36,15 +34,14 @@
       </div>
     </div>
   </div>
-
   <div id="chatIcon" class="chat-icon">
     <img src="{% static 'land/assets/images/chat.png' %}" alt="Support Chat" class="icon">
-
   </div>
-
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
+
+
   <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
     <div class="container">
       <div class="row">
@@ -52,24 +49,22 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="" class="logo" style="display: flex; align-items: center; justify-content: center;">
-            
-              <img src="{% static 'land/assets/images/logo1.svg' %}" alt="Chain App Dev">
+              <img src="{% static 'land/assets/images/logo-new.svg' %}" alt="logo" style="width: 60; height: 60;">
               <h2 class="p-4" >Tenassist</h2>
-
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <!-- *****  ***** -->
               <li><div ><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i>  SignUp</a></div></li> 
-              <li><div ><a id="modal_trigger" href="{% url 'account:login'%}"><i class="fa fa-sign-in-alt "></i>  Login</a></div></li>
-              
-          
+              <li><div ><a id="modal_trigger" href="{% url 'account:login'%}"><i class="fa fa-sign-in-alt"></i> Login</a></div></li>
           </nav>
         </div>
       </div>
     </div>
   </header>
+
+
   <!-- ***** Header Area End ***** -->
   
   <div id="modal" class="popupContainer" style="display:none;">
@@ -77,18 +72,16 @@
         <span class="header_title">Register</span>
         <span class="modal_close"><i class="fa fa-times"></i></span>
     </div>
-
     <section class="popupBody">
-
             <div class="action_btns d-inline">
                 <a href="{% url 'account:register-patient' 'index' %}" class="btn">Register(As a User)</a>
                 <a href="{% url 'account:register-doctor' 'index' %}" class="btn">Register(As a Doctor)</a>
             </div>
-
     </section>
-</div>
+  </div>
 
-  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -97,9 +90,9 @@
               <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <div class="row">
                   <div class="col-lg-12  text-dark">
-                    <h1><bold class="text-primary">Healthcare</bold> to your fingertips, because health knows no distance.</h1> <br>
+                    <h1>Better Health. Better Lives. Better Days</h1> <br>
                     <p class="text-dark">Tenassist is merging telecommunication and AI, enhances healthcare with precise diagnostics and personalized treatment plans, prioritizing data security for cost-effective accessibility.</p>
-                  </div>
+                  </div> 
                   <div class="col-lg-12 ">
                     <div class="white-button first-button scroll-to-section">
                       <a href="recommend/interview0">Recommendation <i class="fab fa-star text-center"></i></a>
@@ -119,13 +112,14 @@
     </div>
   </div>
 
+
   <div id="services" class="services section">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-            <h4>Amazing <em>Services </em> for you</h4>
-            <img src="{% static 'land/assets/images/heading-line-dec.png' %}" alt="">
+            <h4>Amazing <em>Services </em></h4>
+            <img src="{% static 'land/assets/images/heading-line-dec.png' %}" alt=""> <img src="{% static 'land/assets/images/heading-line-dec.png' %}" alt=""> <img src="{% static 'land/assets/images/heading-line-dec.png' %}" alt=""> <img src="{% static 'land/assets/images/heading-line-dec.png' %}" alt=""> <img src="{% static 'land/assets/images/heading-line-dec.png' %}" alt="">
             <p class="text-dark">
               Tenassist <a rel="nofollow" href="" target="_blank"></a> Tenassist combines
               telecommunication and AI to revolutionize healthcare. By leveraging AI-driven diagnostics, virtual assistants,
@@ -153,6 +147,10 @@
           </div>
         </div>
 
+
+
+
+
         <div class="col-lg-3">
           <div class="service-item second-service">
             <div class="icon"></div>
@@ -167,8 +165,7 @@
           <div class="service-item third-service">
             <div class="icon"></div>
             <h4>Audio Chat</h4>
-            <p>It leverages patient data for ongoing AI training, functioning as a dataset, 
-              and includes a chatbot.</p>
+            <p>Audio chat for users not comfortable with video chat</p>
             <div class="text-button">
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
             </div>
@@ -177,8 +174,8 @@
         <div class="col-lg-3">
           <div class="service-item fourth-service">
             <div class="icon"></div>
-            <h4>24/7 Help &amp; consultations</h4>
-            <p>We offer 24/7 support and services, allowing doctors to work remotely.</p>
+            <h4>Live Patient Data</h4>
+            <p>Patients data will be displayed live for doctors.</p>
             <div class="text-button">
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
             </div>
@@ -187,6 +184,11 @@
       </div>
     </div>
   </div>
+
+
+
+
+
 
   <div id="about" class="about-us section">
     <div class="container">
@@ -227,18 +229,21 @@
                 <p>provide consultations, and recommend nearby hospitals..</p>
               </div>
             </div>
-            
           </div>
         </div>
         <div class="col-lg-6">
           <div class="right-image">
-            <img src="{% static 'land/assets/images/about-right-dec.png' %}" alt="">
+            <!--<img src="{% static 'land/assets/images/about-right-dec.png' %}" alt=""> -->
           </div>
         </div>
       </div>
     </div>
   </div>
-         
+
+
+
+
+
 
   <div id="pricing" class="pricing-tables">
     <div class="container">
@@ -251,10 +256,8 @@
               ensuring tailored and efficient healthcare solutions.</p>
           </div>
         </div>
-         
         <div class="col-lg-4">
           <div class="pricing-item-pro">
-            
             <h4>Phsycologiest</h4>
             <div class="">
               <img src="{% static 'land/assets/images/jibril-adem.png' %}" alt="">
@@ -265,21 +268,16 @@
               <li><a href="">See all timings.</a></li>
               <div class="rating">
                 <input type="radio" name="rating" id="star5" class="d-none">
-                <label for="star5">&#9733;</label>
-                
+                <label for="star5">&#9733;</label> 
                 <input type="radio" name="rating" id="star4" class="d-none">
                 <label for="star4">&#9733;</label>
-                
                 <input type="radio" name="rating" id="star3" class="d-none">
                 <label for="star3">&#9733;</label>
-                
                 <input type="radio" name="rating" id="star2" class="d-none">
                 <label for="star2">&#9733;</label>
-                
                 <input type="radio" name="rating" id="star1" class="d-none">
                 <label for="star1">&#9733;</label>
               </div>
-           
             </ul>
             <div class="border-button">
               <a href="{% url 'account:register-patient' 'index' %}">Appointment</a>
@@ -287,6 +285,9 @@
           </div>
         </div>
          
+
+
+
         <div class="col-lg-4">
           <div class="pricing-item-pro">
             
@@ -357,6 +358,10 @@
     </div>
   </div> 
 
+
+
+
+
   <footer id="newsletter">
     <div class="container">
       <div class="row">
@@ -391,7 +396,6 @@
             <p><a href="#">mail@tenassist.et</a></p>
           </div>
         </div>
-
         <div class="col-lg-3">
           <div class="footer-widget">
             <h4>Useful Links</h4>
@@ -416,19 +420,22 @@
           <div class="footer-widget">
             <h4>About Us</h4>
             <div class="logo">
-              <img src="{% static 'land/assets/images/logo1.svg' %}" alt="">
+              <img src="{% static 'land/assets/images/logo-full.svg' %}" width="64" height="64" alt="">
             </div>
             <p>The Tenassist project integrates advanced technologies, combining telecommunication with Artificial Intelligence (AI) to revolutionize healthcare. This initiative establishes a secure telecommunication infrastructure for real-time audio-video consultations.</p>
           </div>
         </div>  
         <div class="col-lg-12">
           <div class="copyright-text">
-            <p>Copyright © 2024 Tenassist Company. All Rights Reserved. 
+            <p>Copyright © 2024 Tenassist Group. All Rights Reserved. 
           </div>
         </div>
       </div>
     </div>
   </footer>
+
+
+
 
 
   <!-- Scripts -->

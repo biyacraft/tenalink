@@ -25,4 +25,37 @@
     width: 60px; /* Adjust the width as needed */
     height: 60px; /* Adjust the height as needed */
   }
+  .animated {
+    position: relative;
+  }
+  
+  .animated-info {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 250px;
+    position: relative;
+  }
+  
+  .animated-item {
+    color: var(--primary-color);
+  }
+  
+  .animated-item {
+    display: block;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    animation: BottomTotop 6s linear infinite 0s;
+  }
+  
+  .animated-item:nth-child(2n+2) {
+    animation-delay: 2s;
+  }
+  
+  .animated-item:nth-child(3n+3) {
+    animation-delay: 4s;
+  }
   

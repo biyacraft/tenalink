@@ -10,7 +10,7 @@ p {
 }
 .button {
     display: inline-block;
-    background-color: #3498db;
+    background-color: #04A7C3;
     color: #ffffff;
     text-decoration: none;
     padding: 10px 20px;
@@ -19,7 +19,7 @@ p {
 .room-id {
     font-weight: bold;
     font-size: 18px;
-    color: #3498db;
+    color: #04A7C3;
 }
 .otp-code {
     font-size: 24px;
