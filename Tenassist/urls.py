@@ -10,7 +10,7 @@ urlpatterns = [
     path('payment/', include('payment.urls')),
     path('chat/', include('webrtc.urls')),
     path('dashboard/', include('dashboard.urls')),
-    path('recommend/', include('dr_re.urls'), name="recommend"),
+    path('recommend/', include('recommendation.urls'), name="recommend"),
     path('appointment/', include('appointment.urls')),
     path('', include('account.urls')),
 ]

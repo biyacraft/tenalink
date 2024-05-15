@@ -1,5 +1,5 @@
 from django.urls import path
-from dr_re.views import *
+from recommendation.views import *
 
 urlpatterns = [
     path("", re_home, name="re_home"),

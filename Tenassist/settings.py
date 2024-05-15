@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'dashboard',
     'appointment',
     'webrtc',
-    'dr_re',
+    'recommendation',
 
     'mathfilters',
 ]

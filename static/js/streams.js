@@ -62,7 +62,7 @@ let handledUserJoined = async (user, mediaType) =>{
         document.getElementById("video-streams").insertAdjacentHTML("beforeend", player)
 
         user.videoTrack.play(`user-${user.uid}`)
-        user.audioTrack.play()
+       user.audioTrack.play()
 
         if (mediaType === 'audio'){
             user.audioTrack.play()
@@ -143,7 +143,6 @@ let changeStatus = async (option) => {
 }
 
 joinAndDisplayLS()
-
 window.addEventListener("beforeunload", deleteMember)
 document.getElementById("leave-btn").addEventListener("click", leaveAndRemoveLS)
 document.getElementById("camera-btn").addEventListener("click", toggleCamera)

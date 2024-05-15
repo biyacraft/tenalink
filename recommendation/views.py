@@ -87,7 +87,7 @@ def login(request):
 
 
 def recommend(request):
-    # ml_model = joblib.load("../dr_re/ml_model/ml_model_whole.joblib")
+    # ml_model = joblib.load("../recommendation/ml_model/ml_model_whole.joblib")
     l = [0] * 132
     if request.method == 'POST':
         # when the form is submitted
@@ -96,7 +96,7 @@ def recommend(request):
             j = symptom.index(i)
             l[j] = 1
         # file_ = open(os.path.join(PROJECT_ROOT, 'filename'))
-        # ml_model = joblib.load("../dr_re/ml_model/ml_model_new1.joblib")
+        # ml_model = joblib.load("../recommendation/ml_model/ml_model_new1.joblib")
         # # predictions = ml_model.predict(pd.DataFrame(l))
         # predictions = ml_model.predict(l)
         disease = ''
@@ -105,7 +105,7 @@ def recommend(request):
         else:
             # disease = ll[predictions.tolist()[0]]
 
-            ml_model = joblib.load("../TENASSIST1/dr_re/ml_model/ml_model_whole.joblib")
+            ml_model = joblib.load("../TENASSIST1/recommendation/ml_model/ml_model_whole.joblib")
             # predictions = ml_model.predict  (pd.DataFrame(l))
             predictions = ml_model.predict(l)
 
