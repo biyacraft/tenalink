@@ -12,19 +12,19 @@ body {
   }
 
   h1 {
-    color: deepskyblue;
+    color: #089ab4;
     text-align: center;
     margin-bottom: 30px;
   }
 
   label {
-    color: deepskyblue;
+    color: #089ab4;
     font-weight: 600;
   }
 
   .btn-primary {
-    background-color: deepskyblue;
-    border-color: deepskyblue;
+    background-color: #089ab4;
+    border-color: #089ab4;
   }
 
   .btn-primary:hover {

@@ -297,7 +297,10 @@ medical-history
 <div class="row">
     <div class="col-lg-9">
         <h5 class="card-title">Medical History</h5>
-
+        <div class="card-title">Current Condition Status</div>
+        <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864512"></iframe>
+        <iframe width="450" height="260" style="border: 3px solid #04A7C3; color: #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864616"></iframe>
         {% for history in medical_histories %}
             <div class="card mb-3">
                 <div class="card-body pt-3">
@@ -307,6 +310,7 @@ medical-history
                     <span style="float: right;margin-right: 20px;">By {{ history.doctor.first_name }} {{ history.doctor.last_name }} on {{ history.date }}</span>
                 </div>
             </div>
+           
         {% endfor %}
     </div>
 </div>
