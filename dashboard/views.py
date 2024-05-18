@@ -149,7 +149,7 @@ def admin_dashboard(request):
         'doctor_form': DoctorRegistrationForm(),
     }
     automate_email(request)
-    return render(request, 'tenassist/admin-page.html', context)
+    return render(request, 'tenalink/admin-page.html', context)
 
 
 @login_first
@@ -242,7 +242,7 @@ def patient_dashboard(request):
         'patient_form': PatientRegistrationForm(),
     }
     automate_email(request)
-    return render(request, 'tenassist/patient-page.html', context)
+    return render(request, 'tenalink/patient-page.html', context)
 
 
 @login_first
@@ -358,4 +358,4 @@ def doctor_dashboard(request):
         'update_form': update_form,
     }
     automate_email(request)
-    return render(request, 'tenassist/doctor-page.html', context)
+    return render(request, 'tenalink/doctor-page.html', context)

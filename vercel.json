@@ -1,7 +1,7 @@
 {
    "builds": [
      {
-       "src": "Tenassist/wsgi.py",
+       "src": "Tenalink/wsgi.py",
        "use": "@vercel/python",
        "config": {
          "maxLambdaSize": "15mb",
@@ -12,7 +12,7 @@
    "routes": [
      {
        "src": "/(.*)",
-       "dest": "Tenassist/wsgi.py"
+       "dest": "Tenalink/wsgi.py"
      }
    ]
  }

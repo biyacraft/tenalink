@@ -100,7 +100,7 @@ def login(request):
         'role': fg,
         'revoke': rvk,
     }
-    return render(request, "tenassist/login.html", context)
+    return render(request, "tenalink/login.html", context)
 
 
 def forgot_password(request):
@@ -189,7 +189,7 @@ def register_patient(request, _to):
         else:
             messages.error(request, "Not Valid Form, please fill form accordingly or may account exist.")
     if _to == 'index':
-        return render(request, 'tenassist/register_patient.html', {'patient_form': form})
+        return render(request, 'tenalink/register_patient.html', {'patient_form': form})
     qd.clear()
     qd.update({'pages': f'register_{_to}'})
     return redirect(reverse('dashboard:admin-dashboard') + f'?{qd.urlencode()}')
@@ -208,7 +208,7 @@ def register_doctor(request, _from):
         else:
             messages.error(request, "Not Valid Form, please fill form accordingly or may account exist.")
     if _from == 'index':
-        return render(request, 'tenassist/register_doctor.html', {'doctor_form': DoctorRegistrationForm()})
+        return render(request, 'tenalink/register_doctor.html', {'doctor_form': DoctorRegistrationForm()})
     qd.clear()
     qd.update({'pages': 'register_doctor'})
     return redirect(reverse('dashboard:admin-dashboard') + f'?{qd.urlencode()}')

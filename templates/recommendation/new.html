@@ -4,14 +4,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tenassist-Recommendation</title>
+    <title>Tenalink-Recommendation</title>
     <link href="{% static 'land/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'land/assets/css/templatemo-chain-app-dev.css' %}">
     <link rel="stylesheet" href="{% static 'land/assets/css/animated.css' %}">
     <link rel="stylesheet" href="{% static 'land/assets/css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'land/assets/css/style.css' %}">
-  </head>
+</head>
+<body>
+    <!-- Navbar -->
+    
   <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
     <div class="container">
       <div class="row">
@@ -20,7 +23,7 @@
             <!-- ***** Logo Start ***** -->
             <a href="" class="logo" style="display: flex; align-items: center; justify-content: center;">
               <img src="{% static 'land/assets/images/logo-new.svg' %}" alt="logo" style="width: 60; height: 60;">
-              <h2 class="p-4" >Tenassist</h2>
+              <h2 class="p-4" >Tenalink</h2>
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -51,12 +54,9 @@
         }
 
     </style>
-</head>
-<body>
-    <!-- Navbar -->
 <!-- main form of page -->
 <h3 class="mt-4 my-4 text-center">Recommendation</h3>
-<div class="container my-4 mt-4" style="background: black; color: white; border-radius: 15px; padding: 40px;">
+<div class="container my-4 mt-4" style="background: #485051; color: white; border-radius: 15px; padding: 40px;">
     
     <form action="/recommend/predict" method="post">
         {% csrf_token %}
@@ -68,10 +68,10 @@
 
         </div>
         <br>
-        <button type="button" id="startSpeechRecognition" class="btn btn-primary" style="margin-left:3px;border:1px solid white; border-radius:20px;">
+        <button type="button" id="startSpeechRecognition" class="btn btn-primary" style="margin-left:3px;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">
             Start Speech Recognition
         </button>
-        <button type="button" id="toggleLanguageButton" class="btn btn-primary" style="margin-left:3px;border:1px solid white; border-radius:20px;">
+        <button type="button" id="toggleLanguageButton" class="btn btn-primary" style="margin-left:3px;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">
             Change Language
         </button>
         <br>
@@ -83,7 +83,7 @@
         {% endif %}
         <br>
 
-        <button type="submit" class="btn btn-danger btn-lg" style="width: 100%; padding: 14px; margin-bottom: 5px;">Predict</button>
+        <button type="submit" class="btn btn-danger btn-lg" style="width: 50%; padding: 14px; margin-bottom: 5px;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">Predict</button>
     </form>
 </div>
 
@@ -98,20 +98,52 @@
         <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" 
         style="padding:4px; margin: 5px 40px 5px 0; display: inline-block;
         padding: 10px 20px;
-        background-color: #007bff;
+        background-color: #04A7C3;
         color: #fff;
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#ff5722'" onmouseout="this.style.backgroundColor='#007bff'">Disease</button>
-        <button type="button"class="btn btn-primary toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" style="margin-left:3px;border:1px solid white; border-radius:20px;">
-            Start Speech Recognition
-        </button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88 ;color:black;">Description</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88 ;color:black;">Precaution</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px;border-radius:5px; background:#4C7F88 ;color:black;">Medications</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88 ;color:black;">Workouts</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88;color:black;">Diets</button>
+        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">Disease</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal" style="padding:4px; margin: 5px 40px 5px 0; display: inline-block;
+        padding: 10px 20px;
+        background-color: #04A7C3;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">Description</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal" style="padding:4px; margin: 5px 40px 5px 0; display: inline-block;
+        padding: 10px 20px;
+        background-color: #04A7C3;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">Precaution</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal" style="padding:4px; margin: 5px 40px 5px 0; display: inline-block;
+        padding: 10px 20px;
+        background-color: #04A7C3;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">Medications</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal" style="padding:4px; margin: 5px 40px 5px 0; display: inline-block;
+        padding: 10px 20px;
+        background-color: #04A7C3;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">Workouts</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal" style="padding:4px; margin: 5px 40px 5px 0; display: inline-block;
+        padding: 10px 20px;
+        background-color: #04A7C3;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#4C7F88'" onmouseout="this.style.backgroundColor='#04A7C3'">Diets</button>
     </div>
 </div>
 
@@ -370,7 +402,7 @@
                               <i class="far fa-envelope-open"></i>
                               <div class="cta-text">
                                   <h4>Mail us</h4>
-                                  <span>mail@tenassist.et</span>
+                                  <span>mail@tenalink.et</span>
                               </div>
                           </div>
                       </div>

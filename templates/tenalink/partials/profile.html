@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                <img src="{{ user.photo.url }}" alt="Profile" class="rounded-circle" width="200" height="200">
+                <h2>{{ user.first_name|title }} {{ user.last_name|title }}</h2>
+                <h3>
+                    {{user_role|title}}
+                    {% if user.is_verified %}
+                        <span class="badge bg-success rounded-pill">Verified</span>
+                    {% elif user_role == 'doctor' %}
+                        <span class="badge bg-danger rounded-pill">Not Verified</span>
+                    {% endif %}
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-8">
+
+        <div class="card">
+            <div class="card-body pt-3">
+                <ul class="nav nav-tabs nav-tabs-bordered">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">
+                            Overview
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"
+                                onclick="blur_password()">Edit
+                            Profile
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">
+                            Change Password
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-2">
+
+                    <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                        <h5 class="card-title">Profile Details</h5>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                            <div class="col-lg-9 col-md-8">{{ user.first_name|title }} {{ user.last_name|title }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Company</div>
+                            <div class="col-lg-9 col-md-8">Tenalink Service company</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Job</div>
+                            <div class="col-lg-9 col-md-8">{{ user_role|title}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Address</div>
+                            <div class="col-lg-9 col-md-8">{{ user.address }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Phone</div>
+                            <div class="col-lg-9 col-md-8">{{ user.phone }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Email</div>
+                            <div class="col-lg-9 col-md-8">{{ user.email }}</div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+
+                        <form method="post" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for form in update_form %}
+                                {% if forloop.counter0 == 4 %}
+                                <div class="row mb-3">
+                                    <div class="col-md-8 col-lg-9">
+                                        <input type="text" id="id_password" name="password"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="row mb-3">
+                                    <label for="{{ form.id_for_label }}"
+                                           class="col-md-4 col-lg-3 col-form-label">{{ form.label }}</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        {{ form }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+
+                            <div class="text-center">
+                                <input name="update" type="submit" class="btn btn-primary" value="Save Changes">
+                            </div>
+                        </form>
+                    </div>
+                    <script>
+                            function blur_password() {
+                                let pass = document.getElementById('id_password')
+                                pass.removeAttribute('required')
+                                pass.setAttribute('type', 'hidden')
+                                pass.value = "{{user.password}}"
+                            }
+                    </script>
+                    <div class="tab-pane fade pt-3" id="profile-change-password">
+                        <form method="post" action="{% url 'account:update_password' user.id user_role%}">
+                            {% csrf_token %}
+                            <div class="row mb-3">
+                                <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current
+                                    Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="current_password" type="password" class="form-control"
+                                           id="currentPassword" minlength="4" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New
+                                    Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="new_password" type="password" class="form-control"
+                                           id="newPassword" minlength="4" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="renew_password" class="col-md-4 col-lg-3 col-form-label">Re-enter
+                                    New
+                                    Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="renew_password" type="password" class="form-control"
+                                           id="renew_password" required>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" name="password_update" class="btn btn-primary">Change
+                                    Password
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

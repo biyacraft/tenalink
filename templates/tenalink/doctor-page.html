@@ -1,0 +1,535 @@
+{% extends 'tenalink/main_base.html' %}
+
+{% block title %}
+Doctor
+{% endblock %}
+
+{% block aside %}
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}">
+                <i class="bi bi-menu-app"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=working_day">
+                <i class="bi bi-calendar-check"></i></i><span>Working Day</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=view_rate">
+                <i class="bi bi-star-half"></i>
+                <span>View Rate</span>
+            </a>
+        </li>
+        {% if not user.is_verified %}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=call_admin">
+                <i class="bi bi-person-fill"></i>
+                <span>Call Admin</span>
+            </a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=remove_day">
+                <i class="bi bi-trash"></i>
+                <span>Remove Work Dy</span>
+            </a>
+        </li>
+    </ul>
+
+</aside><!-- End Sidebar-->
+{% endblock %}
+
+{% block middle_breadcrumb %}
+doctor
+{% endblock %}
+
+{% block active_breadcrumb %}
+{% if page == None %}
+dashboard
+{% elif page|slice:":4" == 'chat' %}
+chatting
+{% elif page == "working_day" %}
+add_working_day
+{% elif page == "remove_day" %}
+remove_working_day
+{% elif page == "call_admin" %}
+Book an appointment & call admin
+{% elif page == 'profile' %}
+profile
+{% elif page == 'view_rate' %}
+view_rate
+{% endif %}
+{% endblock %}
+
+{% block middle %}
+{% load static %}
+{% if page == "working_day" %}
+<!-- Start Working day -->
+<div class="row">
+    <div class="col-lg-9">
+        <h5 class="card-title">Add Working date</h5>
+        <div class="card p-5">
+            <form action="{% url 'appointment:fill-date' %}" method="post" class="row g-3">
+                {% csrf_token %}
+                <div class="col-12">
+                    <label for="inputDate1" class="form-label">Initial | Specific Date</label>
+                    <input id="inputDate1" name="date-first" type="date" class="form-control" , required>
+                </div>
+                <div class="col-12">
+                    <label for="inputDate" class="form-label">Final Date</label>
+                    <input id="inputDate" name="date-final" type="date" class="form-control">
+                </div>
+                <div class="col-12">
+                    <label for="floatingTextarea" class="form-label">Free Time</label>
+                    <textarea class="form-control" name="date-input" placeholder="Address" required
+                              id="floatingTextarea"
+                              style="height: 100px;"></textarea>
+                </div>
+
+                <div class="float-end col-4">
+                    <input type="submit" name="fill_date" value="ADD" class="form-control btn btn-primary">
+                </div>
+            </form>
+        </div>
+        <div class="card p-5">
+            <h5 class="card-title">How to fill my work day?</h5>
+            <p>
+                Fill in only the initial or specific date if your schedule is different for particular date,
+                and then fill in the free time in the text area.
+            </p>
+            <p>
+                Fill in the start and end dates if your schedule is the same for the range of dates,
+                and then fill in the free time in the text box.
+            </p>
+            <p>
+                Use the suggested format: <span style="font-family:monospace; color:red;font-size:19px">Start-time - end-time:d|n.</span><br>
+                <span style="font-family:monospace; color:red;font-size:19px">Note:</span> don't use minute here and
+                both n and d are case-insensitive.
+                <br><br>
+                3-5:d -> from morning 3:00 to 5:00, d-> refers to day, n->for night <br>
+                10-12:d -> from 10:00 to 12:00, in afternoon <br>
+                7-8:N -> from 7:00 to 8:00, in Night <br>
+
+            </p>
+            <p>
+                Please use commas to separate the different time slots, eg. 3-5:d,10-12:d,7-8:N
+            </p>
+
+        </div>
+    </div>
+</div>
+<!-- End Working day -->
+{% elif page == 'remove_day' %}
+<div class="row contact justify-content-center">
+    <div class="col-xl-8">
+        <p class="text-center card-title">Select and remove your work-day.</p>
+        <div class="card p-4">
+            <form class="row g-3" action="" method="get">
+                <input type="hidden" name="pages" value="remove_day">
+                <div class="col-md-4">
+                    <input type="date" name="date" class="form-control" placeholder="date">
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" name="list_date" class="form-control btn btn-primary" value="Submit">
+                </div>
+            </form>
+            <hr>
+            <div class="row">
+                <div class="">
+                    <div class="row">
+                        {% for date in book_info.dates %}
+                        <div class="col col-xl-3 col-xl-4">
+                            <div class="card-title">{{ date }}</div>
+                            {% for schedule in book_info.schedules %}
+                            {% if schedule.date == date %}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a class="btn alert-danger sm"
+                                       title="Remove this date!"
+                                       href="{% url 'dashboard:delete-item' schedule.id 'working_day' %}">
+                                        {{ schedule.schedule }}
+                                    </a>
+                                </li>
+                            </ul>
+                            {% endif %}
+
+                            {% endfor %}
+                        </div>
+
+                        {% empty %}
+                        <div class="col">
+                            <div class="btn sm">
+                                No Schedule
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% elif page == 'view_rate' %}
+<!-- start of view Rate -->
+<div class="row">
+    <div class="col-lg-9">
+        <h5 class="card-title">List of Rate</h5>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Total: {{rate_info.rates|length}} rate{{rate_info.rates|pluralize}}
+                    | {{rate_info.total_percent|floatformat:2 }}% success </h5>
+            </div>
+        </div>
+
+        {% for rate in rate_info.rates %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ rate.rate }} rate out of 10</h5>
+                {{ rate.comment }}
+            </div>
+            <div class="card-footer">
+                <span style="float: right;margin-right: 20px;">By {{ rate.user.first_name }} on {{ rate.date }}</span>
+            </div>
+        </div>
+        {% empty %}
+        <h5 class="card-title">Nothing to show here.</h5>
+        {% endfor %}
+    </div>
+</div>
+<!-- end view Rate -->
+{% elif page == "call_admin" %}
+<div class="row contact justify-content-center">
+    <div class="col-xl-8">
+        <p class="text-center card-title">Book an appointment & call admin for Approval.</p>
+        <div class="card p-4">
+            <form class="row g-3" action="" method="get">
+                <input type="hidden" name="pages" value="call_admin">
+                <div class="col-md-4">
+                    <select name="admin" class="form-control">
+                        <option value="" disabled>Select Admin</option>
+                        {% for admin in admins %}
+                        <option value="{{ admin.id }}">{{ admin.first_name }} {{ admin.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input type="date" name="date" class="form-control" placeholder="date">
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" name="list_date_admin" class="form-control btn btn-primary" value="Submit">
+                </div>
+            </form>
+            <hr>
+            <div class="row">
+                <div class="">
+                    <div class="row">
+                        {% for date in book_info_admin.dates %}
+                        <div class="col col-xl-3 col-xl-4">
+                            <div class="card-title">{{ date }}</div>
+                            {% for schedule in book_info_admin.schedules %}
+                            {% if schedule.date == date %}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a class="btn alert-info sm"
+                                       href="{% url 'appointment:schedule-admin' %}?email={{ book_info_admin.add_email }}&sch_id={{ schedule.id }}">
+                                        {{ schedule.schedule }}
+                                    </a>
+                                </li>
+                            </ul>
+                            {% endif %}
+
+                            {% endfor %}
+                        </div>
+
+                        {% empty %}
+                        <div class="col">
+                            <div class="btn sm">
+                                No Schedule
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% elif page|slice:":4" == 'chat' %}
+{% if page == 'chatting' %}
+{% include 'chat/room.html' %}
+{% else %}
+{% include 'chat/index.html' %}
+{% endif %}
+{% elif page == 'profile' %}
+{% include 'tenalink/partials/profile.html' %}
+{% else %}
+{% load mathfilters %}
+<!-- Start Data table -->
+<!-- Prescription modal -->
+<div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
+    <div class="modal-dialog resizable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Write Prescription for patient.</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" id="input_id_pr" name="id" value="">
+                    <div class="form-floating mb-3 mt-3">
+                                <textarea class="form-control" required placeholder="Leave a comment here"
+                                          name="prescription"
+                                          id="floatingTextareapr"
+                                          style="height: 100px;"></textarea>
+                        <label for="floatingTextarea">Write Prescription here....</label>
+                    </div>
+                    <input type="submit" value="Save" name="set_prescription" class="btn btn-primary float-end">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Medical History modal -->
+<div class="modal fade" id="disablebackdrop2" tabindex="-1" data-bs-backdrop="false">
+    <div class="modal-dialog resizable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Write Medical History</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <input type="hidden" id="input_id_mh" name="id" value="">
+                        <div class="form-check">
+                            <input class="form-check-input" name="is_shown" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                Not shown to patients
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3 mt-3">
+                                <textarea class="form-control" required placeholder="Leave a comment here"
+                                          name="md_history"
+                                          id="floatingTextarea2" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea2">Write Medical History here...</label>
+                    </div>
+                    <input type="submit" value="Save" name="set_md_history" class="btn btn-primary float-end">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title pl-3">Book history.</h5>
+                <table class="table datatable">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Patient name</th>
+                        <th scope="col">Patient Email</th>
+                        <th scope="col">Your Email</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">ROOM_ID</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Left Time</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for history in histories %}
+
+                    <tr>
+                        <th scope="row">{{ history.id }}</th>
+                        <td>{{ history.patient.first_name }} {{ history.patient.last_name }}</td>
+                        <td>{{ history.patient.email }}</td>
+                        <td>{{ history.doctor.email }}</td>
+                        <td>{{ history.schedule.schedule }}</td>
+                        <td class="fw-bold">{{ history.room_id }}</td>
+                        {% if history.get_status == 1 %}
+                        <td><a href="#" class="btn btn-sm btn-primary">Pending</a></td>
+                        {% elif history.get_status == 0 and history.host %}
+                        <td><a href="#" class="btn btn-sm btn-success">Ongoing</a></td>
+                        {% elif history.get_status == 0 or history.host %}
+                        <td><a href="#" class="btn btn-sm btn-primary">Pending</a></td>
+                        {% elif history.get_status == 2 %}
+                        <td><a href="#" class="btn btn-sm btn-info">Waiting</a></td>
+                        {% else %}
+                        <td><a href="#" class="btn btn-sm btn-danger">Passed</a></td>
+                        {% endif %}
+
+                        {% if history.get_status == 1 %}
+                        <td><a href="{% url 'dashboard:doctor-dashboard'%}?pages=chat&app_id={{ history.id }}&purpose=1"
+                               class="btn btn-sm btn-outline-info">CALL</a></td>
+
+                        {% elif history.get_status == 0 and history.host%}
+                        <td>
+                            <button type="button" onclick="set_id_pr({{ history.patient.id }})"
+                                    class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#disablebackdrop">
+                                Prescription
+                            </button>
+                            <button type="button" onclick="set_id_mh({{ history.patient.id }})"
+                                    class="btn btn-sm btn-outline-warning" data-bs-toggle="modal"
+                                    data-bs-target="#disablebackdrop2">
+                                Medical H.
+                            </button>
+                            {% for his in histories %}
+                                {% if his.id == history.id %}
+                                  <div class="modal fade mt-5" id="modalDialogScrollable{{ history.id }}" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">View Medical history of patient given by Doctors
+                                          </h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {% for mhis in history.patient.patient_mhistory.all %}
+                                            <p class="float-end text-muted">{{ mhis.date }}</p>
+                                            <p>Prescribed by <b class="text-primary fw-bold fs-6 text-monospace">Dr. {{ mhis.doctor.first_name|title }} </b></p>
+                                            <p>
+                                                {{ mhis.history }}
+                                            </p>
+                                            <hr>
+                                            {% empty %}
+                                            <p class="text-center">No Medical history yet.</p>
+                                            {% endfor %}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalDialogScrollable{{ history.id }}">
+                                    View MH
+                                  </button>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        {% elif history.get_status == 0 or history.host %}
+                        <td><a href="{% url 'dashboard:doctor-dashboard'%}?pages=chat&app_id={{ history.id }}&purpose=1"
+                               class="btn btn-sm btn-outline-info">CALL</a></td>
+                        {% elif history.get_status == 2 %}
+                        <td>-</td>
+                        {% else %}
+                        <td>-</td>
+                        {% endif %}
+
+                        <td>
+                            {% with tm=history.left_time %}
+                            {{tm.days}} Days, {{ tm.seconds|intdiv:3600 }} Hr, {{ tm.seconds|mod:3600|intdiv:60 }} Min
+                            {% endwith %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                Approvals waiting
+                <table class="table datatable">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Patient name</th>
+                        <th scope="col">Patient Email</th>
+                        <th scope="col">Your Email</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">ROOM_ID</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Left Time</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for history in admin_histories %}
+
+                    <tr>
+                        <th scope="row">{{ history.id }}</th>
+                        <td>{{ history.patient.first_name }} {{ history.patient.last_name }}</td>
+                        <td>{{ history.patient.email }}</td>
+                        <td>{{ history.doctor.email }}</td>
+                        <td>{{ history.schedule.schedule }}</td>
+                        <td class="fw-bold">{{ history.room_id }}</td>
+                        {% if history.get_status == 1 %}
+                        <td><a href="#" class="btn btn-sm btn-primary">Pending</a></td>
+                        {% elif history.get_status == 0 %}
+                        <td><a href="#" class="btn btn-sm btn-success">Ongoing</a></td>
+                        {% elif history.get_status == 2 %}
+                        <td><a href="#" class="btn btn-sm btn-info">Waiting</a></td>
+                        {% else %}
+                        <td><a href="#" class="btn btn-sm btn-danger">Passed</a></td>
+                        {% endif %}
+
+                        {% if history.get_status == 1 %}
+                        <td><a href="{% url 'dashboard:doctor-dashboard'%}?pages=chat&app_id={{ history.id }}&purpose=0"
+                               class="btn btn-sm btn-outline-info">CALL</a></td>
+                        {% elif history.get_status == 0 %}
+                        <td>
+                            -
+                        </td>
+                        {% elif history.get_status == 2 %}
+                        <td>-</td>
+                        {% else %}
+                        <td>-</td>
+                        {% endif %}
+
+                        <td>
+                            {% with tm=history.left_time %}
+                            {{tm.days}} Days, {{ tm.seconds|intdiv:3600 }} Hr, {{ tm.seconds|mod:3600|intdiv:60 }} Min
+                            {% endwith %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            function set_id_mh(id){
+                const inp_mh = document.getElementById("input_id_mh");
+                inp_mh.setAttribute('value', id)
+            }
+            function set_id_pr(id){
+                const inp_pr = document.getElementById("input_id_pr");
+                inp_pr.setAttribute('value', id)
+            }
+
+            $('.modal-content').resizable({
+                //alsoResize: ".modal-dialog",
+                minHeight: 300,
+                minWidth: 300
+            });
+            $('.modal-dialog').draggable();
+
+            $('#myModal').on('show.bs.modal', function () {
+                $(this).find('.modal-body').css({
+                    'max-height':'100%'
+                });
+            });
+
+
+
+
+
+        </script>
+    </div>
+</div>
+<!-- End Data table -->
+{% endif %}
+{% endblock %}

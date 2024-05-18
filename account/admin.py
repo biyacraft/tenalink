@@ -8,6 +8,6 @@ admin.site.register(Patient)
 admin.site.register(Doctor)
 admin.site.register(Revoke)
 
-admin.site.site_header = "Tenassist Super Admin"
-admin.site.site_title = "Tenassist SuperAdmin Portal"
-admin.site.index_title = "Tenassist Super Admin"
+admin.site.site_header = "Tenalink Super Admin"
+admin.site.site_title = "Tenalink SuperAdmin Portal"
+admin.site.index_title = "Tenalink Super Admin"

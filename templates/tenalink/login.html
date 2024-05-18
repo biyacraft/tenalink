@@ -1,109 +1,130 @@
+
+{% extends 'tenalink/index_base.html' %}
 {% load static %}
-<html lang="en">
+{% block title %}
+Login
+{% endblock %}
 
-  <head>
+{% block breadcrumb %}
+login
+{% endblock %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+{% block middle %}
+<div class="row justify-content-center w-full">
+    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                    <p class="text-center small">Enter your email & password to login</p>
+                </div>
+                {% if revoke == "email" %}
+                <form method="post" action="" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <label for="yourUsername" class="form-label">Email</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="email" name="email" class="form-control" id="yourUsername"
+                                   placeholder="please enter your email" required>
+                            <div class="invalid-feedback">Your email is used to send a code.</div>
+                        </div>
+                    </div>
 
-    <title>Tenalink</title>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" name="email_field" type="submit">Submit</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Don't have account? <a
+                                href="{% url 'account:register-patient' 'index' %}">Create
+                            an account</a></p>
+                    </div>
+                </form>
+                {% elif revoke == "code" %}
+                <form method="post" action="" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <label for="yourUsername" class="form-label">Code</label>
+                        <div class="input-group has-validation">
+                            <input type="text" name="codechar" class="form-control" id="yourUsername"
+                                   placeholder="Enter the code you received" required>
+                            <div class="invalid-feedback">Check your email and finish the process.</div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" name="code" type="submit">Revoke</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Don't have account? <a
+                                href="{% url 'account:register-patient' 'index' %}">Create
+                            an account</a></p>
+                    </div>
+                </form>
+                {% elif revoke == "password" %}
+                <div class="">
+                    <form method="post" action="{% url 'account:update_password_forgot' id reset_req %}">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-md-12 mb-3">
+                                <input name="new_password" type="password" class="form-control"
+                                       placeholder="New Password" minlength="4" required>
+                            </div>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'land/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> 
-    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+                            <div class="col-md-12 col-lg-12 mb-3">
+                                <input name="renew_password" type="password" class="form-control"
+                                       placeholder="Re-enter New Password" minlength="4" required>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" name="password_update" class="btn btn-primary">Change
+                                Password
+                            </button>
+                        </div>
+                    </form>
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'land/assets/css/templatemo-chain-app-dev.css' %}">
-    <link rel="stylesheet" href="{% static 'land/assets/css/animated.css' %}">
-    <link rel="stylesheet" href="{% static 'land/assets/css/owl.css' %}">
+                </div>
+                {% else %}
+                <form method="post" action="" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %}
 
-  </head>
+                    <div class="col-12">
+                        <label for="yourName" class="form-label">Your Email</label>
+                        <input type="email" name="email" class="form-control" id="yourName" required>
+                        <div class="invalid-feedback">Please, enter your valid email!</div>
+                    </div>
 
-<body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="{% url 'account:home_page'%}" class="logo" style="display: flex; justify-content: center; align-items: center;">
-              <img src="{% static 'land/assets/images/logo-new.svg' %}" width="64" height="64" alt="Tenalink">
-
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            {% if status == no %}
-            <ul class="nav">
-              <!-- *****  ***** -->
-              <li><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i>  SignUp</a></li>
-              <li><a id="modal_trigger" href="{% url 'account:login'%}"><i class="fa fa-sign-in-alt"></i>  Login</a></li>
-                <div id="google_translate_element"></div>
-                <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                <script>
-                                    function googleTranslateElementInit() {
-                                        new google.translate.TranslateElement({
-                                                pageLanguage: 'en'
-                                            },
-                                            'google_translate_element'
-                                        );
-                                    }
-                                </script>
-            </ul>
-            {% endif %}
-
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
-
-  <div id="modal" class="popupContainer" style="display:none;">
-    <div class="popupHeader">
-        <span class="header_title">Register</span>
-        <span class="modal_close"><i class="fa fa-times"></i></span>
-    </div>
-
-    <section class="popupBody">
-        <!-- Social Login -->
-             <div class="action_btns d-inline">
-                <a href="{% url 'account:register-patient' 'index' %}" class="btn">Register(As a User)</a>
-                <a href="{% url 'account:register-doctor' 'index' %}" class="btn">Register(As a Doctor)</a>
+                    <div class="col-12">
+                        <label for="yourPassword" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="yourPassword" minlength="4" required>
+                        <div class="invalid-feedback">Please enter your password and more than 4 chars!</div>
+                    </div>
+                    <div class="col-12">
+                        <input class="form-check-input" name="is_doctor" type="checkbox" id="gridCheck1" value="True">
+                        <label class="form-check-label" for="gridCheck1">
+                            Login as a Doctor
+                        </label>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0"><a href="{% url 'account:revoke-new-password' %}?revoke=true">I
+                            forgot my password.</a>
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" name="login" type="submit">Login</button>
+                    </div>
+                    <div class="col-12">
+                        <p class="small mb-0">Don't have account? <a
+                                href="{% url 'account:register-patient' 'index' %}">Create
+                            an account</a></p>
+                        <span class="small mb-0"> <a
+                                href="{% url 'account:home_page'%}">go back to home?</a></span>
+                    </div>
+                </form>
+                {% endif %}
             </div>
         </div>
-    </section>
-</div>
-
-  <div id="services" class="services section">
-    {% block recommend_service %}
-      {% endblock %}
-  </div>
-
+    </div>
+    
   <style>
     ul {
       margin: 0px;
@@ -326,7 +347,7 @@
                           </div>
                           <ul>
                               <li><a href="#">Home</a></li>
-                              <li><a href="#">Jimma University</a></li>
+                              <li><a href="https://ju.edu.et">Jimma University</a></li>
                               <li><a href="#">Services</a></li>
                               <li><a href="#">Health Minister</a></li>
                               <li><a href="#">Contact</a></li>
@@ -380,14 +401,5 @@
           </div>
       </div>
   </footer>
-  <!-- Scripts -->
-  <script src="{% static 'land/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'land/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'land/assets/js/owl-carousel.js' %}"></script>
-  <script src="{% static 'land/assets/js/animation.js' %}"></script>
-  <script src="{% static 'land/assets/js/imagesloaded.js' %}"></script>
-  <script src="{% static 'land/assets/js/popup.js' %}"></script>
-  <script src="{% static 'land/assets/js/custom.js' %}"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-</body>
-</html>
+</div>
+{% endblock %}
