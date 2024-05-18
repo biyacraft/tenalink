@@ -29,7 +29,7 @@ class Doctor(models.Model):
         ('General Physician', 'General Physician'),
         ('Orthopedist', 'Orthopedist'),
         ('Gynaecologist', 'Gynaecologist'),
-        ('Pediatrics', 'Pediatrics'),
+        ('Pediatrician', 'Pediatrician'),
         ('Psychologist', 'Psychologist'),
     ]
     first_name = models.CharField(max_length=100)

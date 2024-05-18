@@ -1,0 +1,583 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tenassist-Recommendation</title>
+    <link href="{% static 'land/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'land/assets/css/templatemo-chain-app-dev.css' %}">
+    <link rel="stylesheet" href="{% static 'land/assets/css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'land/assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'land/assets/css/style.css' %}">
+  </head>
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="" class="logo" style="display: flex; align-items: center; justify-content: center;">
+              <img src="{% static 'land/assets/images/logo-new.svg' %}" alt="logo" style="width: 60; height: 60;">
+              <h2 class="p-4" >Tenassist</h2>
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <!-- *****  ***** -->
+              <li><div ><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i>  SignUp</a></div></li> 
+              <li><div ><a id="modal_trigger" href="{% url 'account:login'%}"><i class="fa fa-sign-in-alt"></i> Login</a></div></li>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <style>
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            color: black;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+<!-- main form of page -->
+<h3 class="mt-4 my-4 text-center">Recommendation</h3>
+<div class="container my-4 mt-4" style="background: black; color: white; border-radius: 15px; padding: 40px;">
+    
+    <form action="/recommend/predict" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            
+            <label for="symptoms">Select Symptoms:</label>
+            <input type="text" class="form-control", id="symptoms" name="symptoms" placeholder="type systems such as itching, sleeping, aching etc">
+
+        </div>
+        <br>
+        <button type="button" id="startSpeechRecognition" class="btn btn-primary" style="margin-left:3px;border:1px solid white; border-radius:20px;">
+            Start Speech Recognition
+        </button>
+        <button type="button" id="toggleLanguageButton" class="btn btn-primary" style="margin-left:3px;border:1px solid white; border-radius:20px;">
+            Change Language
+        </button>
+        <br>
+        <!-- Display the transcribed text here -->
+        <div name="mysysms" id="transcription"></div>
+
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+        <br>
+
+        <button type="submit" class="btn btn-danger btn-lg" style="width: 100%; padding: 14px; margin-bottom: 5px;">Predict</button>
+    </form>
+</div>
+
+{% if predicted_disease %}
+
+<!-- Results -->
+<h1 class="text-center my-4 mt-4">Our AI System Results</h1>
+<div class="container">
+
+    <div class="result-container">
+        <!-- Buttons to toggle display -->
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" 
+        style="padding:4px; margin: 5px 40px 5px 0; display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#ff5722'" onmouseout="this.style.backgroundColor='#007bff'">Disease</button>
+        <button type="button"class="btn btn-primary toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" style="margin-left:3px;border:1px solid white; border-radius:20px;">
+            Start Speech Recognition
+        </button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88 ;color:black;">Description</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88 ;color:black;">Precaution</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px;border-radius:5px; background:#4C7F88 ;color:black;">Medications</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88 ;color:black;">Workouts</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#4C7F88;color:black;">Diets</button>
+    </div>
+</div>
+
+{% endif %}
+<div>
+    symptoms = 'high_fever', 'nausea', 'skin_rash', 'yellowish_skin', 'itching', 'mild_fever', 'vomiting', 'fatigue',
+           'abnormal_menstruation', 'muscle_weakness', 'indigestion', 'joint_pain', 'yellowing_of_eyes', 'headache',
+           'blurred_and_distorted_vision', 'continuous_feel_of_urine', 'prominent_veins_on_calf', 'sweating',
+           'altered_sensorium', 'lack_of_concentration', 'neck_pain', 'abdominal_pain', 'irritation_in_anus', 'chills',
+           'shivering', 'sunken_eyes', 'breathlessness', 'hip_joint_pain', 'cough', 'ulcers_on_tongue', 'dark_urine',
+           'loss_of_appetite', 'weight_loss', 'irregular_sugar_level', 'malaise', 'rusty_sputum', 'chest_pain',
+           'mucoid_sputum', 'diarrhoea', 'family_history', 'phlegm', 'muscle_pain', 'congestion', 'patches_in_throat',
+           'loss_of_balance', 'unsteadiness', 'stomach_pain', 'spotting_ urination', 'dizziness', 'dischromic _patches',
+           'inflammatory_nails', 'acidity', 'stiff_neck', 'extra_marital_contacts', 'red_sore_around_nose', 'anxiety',
+           'scurring', 'burning_micturition', 'toxic_look_(typhos)', 'dehydration', 'blackheads',
+           'pain_during_bowel_movements', 'nodal_skin_eruptions', 'belly_pain', 'knee_pain', 'back_pain', 'coma',
+           'excessive_hunger', 'pus_filled_pimples', 'muscle_wasting', 'blister', 'pain_behind_the_eyes',
+           'receiving_unsterile_injections', 'continuous_sneezing', 'silver_like_dusting', 'depression',
+           'spinning_movements', 'swollen_extremeties', 'yellow_crust_ooze', 'weakness_in_limbs', 'passage_of_gases',
+           'polyuria', 'painful_walking', 'red_spots_over_body', 'constipation', 'bladder_discomfort', 'slurred_speech',
+           'small_dents_in_nails', 'obesity', 'distention_of_abdomen', 'watering_from_eyes',
+           'weakness_of_one_body_side', 'internal_itching', 'throat_irritation', 'swelling_joints', 'fluid_overload.1',
+           'acute_liver_failure', 'visual_disturbances', 'bruising', 'foul_smell_of urine', 'movement_stiffness',
+           'weight_gain', 'stomach_bleeding', 'yellow_urine', 'cramps', 'skin_peeling', 'swollen_legs',
+           'history_of_alcohol_consumption', 'swelling_of_stomach', 'fast_heart_rate', 'enlarged_thyroid',
+           'swollen_blood_vessels', 'blood_in_sputum', 'pain_in_anal_region', 'bloody_stool',
+           'receiving_blood_transfusion', 'brittle_nails', 'lethargy', 'increased_appetite', 'drying_and_tingling_lips',
+           'puffy_face_and_eyes', 'restlessness', 'sinus_pressure', 'swelled_lymph_nodes', 'palpitations',
+           'irritability', 'redness_of_eyes', 'loss_of_smell', 'fluid_overload', 'mood_swings', 'cold_hands_and_feets',
+           'runny_nose'
+</div>
+
+
+
+
+
+
+
+<!-- Disease Modal -->
+    <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;"> <!-- Set header background color inline -->
+                    <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: modal-body-color;"> <!-- Set modal body background color inline -->
+                    <p>{{ predicted_disease }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Description Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{ dis_des }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        ul {
+          margin: 0px;
+          padding: 0px;
+      }
+      .footer-section {
+        background-image: linear-gradient(90deg, #020024 0%, #046272 35%, #152431 100%);
+        position: relative;
+      }
+      .footer-cta {
+        border-bottom: 1px solid #373636;
+      }
+      .single-cta i {
+        color: #04A7C3;
+        font-size: 30px;
+        float: left;
+        margin-top: 8px;
+      }
+      .cta-text {
+        padding-left: 15px;
+        display: inline-block;
+      }
+      .cta-text h4 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .cta-text span {
+        color: #757575;
+        font-size: 15px;
+      }
+      .footer-content {
+        position: relative;
+        z-index: 2;
+      }
+      .footer-pattern img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 330px;
+        background-size: cover;
+        background-position: 100% 100%;
+      }
+      .footer-logo {
+        margin-bottom: 30px;
+      }
+      .footer-logo img {
+          max-width: 200px;
+      }
+      .footer-text p {
+        margin-bottom: 14px;
+        font-size: 14px;
+            color: #7e7e7e;
+        line-height: 28px;
+      }
+      .footer-social-icon span {
+        color: #fff;
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
+      }
+      .footer-social-icon a {
+        color: #fff;
+        font-size: 16px;
+        margin-right: 15px;
+      }
+      .footer-social-icon i {
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 38px;
+        border-radius: 50%;
+      }
+      .facebook-bg{
+        background: #3B5998;
+      }
+      .twitter-bg{
+        background: #55ACEE;
+      }
+      .google-bg{
+        background: #DD4B39;
+      }
+      .footer-widget-heading h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        position: relative;
+      }
+      .footer-widget-heading h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -15px;
+        height: 2px;
+        width: 50px;
+        background: #04A7C3;
+      }
+      .footer-widget ul li {
+        display: inline-block;
+        float: left;
+        width: 50%;
+        margin-bottom: 12px;
+      }
+      .footer-widget ul li a:hover{
+        color: #04A7C3;
+      }
+      .footer-widget ul li a {
+        color: #878787;
+        text-transform: capitalize;
+      }
+      .subscribe-form {
+        position: relative;
+        overflow: hidden;
+      }
+      .subscribe-form input {
+        width: 100%;
+        padding: 14px 28px;
+        background: #2E2E2E;
+        border: 1px solid #2E2E2E;
+        color: #fff;
+      }
+      .subscribe-form button {
+          position: absolute;
+          right: 0;
+          background: #04A7C3;
+          padding: 13px 20px;
+          border: 1px solid #04A7C3;
+          top: 0;
+      }
+      .subscribe-form button i {
+        color: #fff;
+        font-size: 22px;
+        transform: rotate(-6deg);
+      }
+      .copyright-area{
+        background: #202020;
+        padding: 25px 0;
+      }
+      .copyright-text p {
+        margin: 0;
+        font-size: 14px;
+        color: #878787;
+      }
+      .copyright-text p a{
+        color: #04A7C3;
+      }
+      .footer-menu li {
+        display: inline-block;
+        margin-left: 20px;
+      }
+      .footer-menu li:hover a{
+        color: #04A7C3;
+      }
+      .footer-menu li a {
+        font-size: 14px;
+        color: #878787;
+      }
+      </style>
+      
+        <footer class="footer-section mt--5">
+          <div class="container">
+              <div class="footer-cta pt-5 pb-5">
+                  <div class="row">
+                      <div class="col-xl-4 col-md-4 mb-30">
+                          <div class="single-cta">
+                              <i class="fas fa-map-marker-alt"></i>
+                              <div class="cta-text">
+                                  <h4>Find us</h4>
+                                  <span>Jimma Ethiopia</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-4 col-md-4 mb-30">
+                          <div class="single-cta">
+                              <i class="fas fa-phone"></i>
+                              <div class="cta-text">
+                                  <h4>Call us</h4>
+                                  <span>0949257378</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-4 col-md-4 mb-30">
+                          <div class="single-cta">
+                              <i class="far fa-envelope-open"></i>
+                              <div class="cta-text">
+                                  <h4>Mail us</h4>
+                                  <span>mail@tenassist.et</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="footer-content pt-5 pb-5 ">
+                  <div class="row">
+                      <div class="col-xl-4 col-lg-4 mb-50">
+                          <div class="footer-widget">
+                              <div class="footer-logo">
+                                  <a href="#"><img src="{% static 'land/assets/images/logo-full.svg' %}" class="img-fluid" alt="logo"></a>
+                              </div>
+                              <div class="footer-text">
+                                  <p>We're a team of developers and designers united by a passion for innovative solutions. 
+                                    We believe that security, functionality, and design go hand-in-hand.</p>
+                              </div>
+                              <div class="footer-social-icon">
+                                  <span>Follow us</span>
+                                  <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                  <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                  <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                          <div class="footer-widget">
+                              <div class="footer-widget-heading">
+                                  <h3>Useful Links</h3>
+                              </div>
+                              <ul>
+                                  <li><a href="#">Home</a></li>
+                                  <li><a href="https://ju.edu.et">Jimma University</a></li>
+                                  <li><a href="#">Services</a></li>
+                                  <li><a href="#">Health Minister</a></li>
+                                  <li><a href="#">Contact</a></li>
+                                  <li><a href="#">Better Help</a></li>
+                                  <li><a href="#">Our Services</a></li>
+                                  <li><a href="#">Expert Team</a></li>
+                                  <li><a href="#">Contact us</a></li>
+                                  <li><a href="#">Latest News</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                          <div class="footer-widget">
+                              <div class="footer-widget-heading">
+                                  <h3>Subscribe</h3>
+                              </div>
+                              <div class="footer-text mb-25">
+                                  <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                              </div>
+                              <div class="subscribe-form">
+                                  <form action="#">
+                                      <input type="text" placeholder="Email Address">
+                                      <button><i class="fab fa-telegram-plane"></i></button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="copyright-area">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                          <div class="copyright-text">
+                              <p>Copyright &copy; 2024, All Right Reserved <a href="https://ab4io.vercel.app">ab4io</a></p>
+                          </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                          <div class="footer-menu">
+                              <ul>
+                                  <li><a href="#">Home</a></li>
+                                  <li><a href="#">Terms</a></li>
+                                  <li><a href="#">Privacy</a></li>
+                                  <li><a href="#">Policy</a></li>
+                                  <li><a href="#">Contact</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </footer>
+<!-- Precaution Modal -->
+    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_precautions %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Medications Modal -->
+    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in medications %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workouts Modal -->
+    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in workout %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diets Modal -->
+    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_diet %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+    const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+    const toggleSpeechRecognitionLanguage = document.getElementById('toggleLanguageButton');
+    const transcriptionDiv = document.getElementById('transcription');
+
+    startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+    toggleSpeechRecognitionLanguage.addEventListener('click', toggleRecognitionLanguage);
+
+    function startSpeechRecognition() {
+        const recognition = new webkitSpeechRecognition(); // Use webkitSpeechRecognition for compatibility
+
+        recognition.lang = 'am-ET'; // Set the language for recognition
+
+        recognition.onresult = function (event) {
+            const result = event.results[0][0].transcript;
+            transcriptionDiv.textContent = result;
+        };
+
+        recognition.onend = function () {
+            console.log('Speech recognition ended.');
+        };
+
+        recognition.start();
+    }
+    function toggleRecognitionLanguage() {
+        if (recognitionLanguage === 'am-ET') {
+            recognitionLanguage = 'en-US';
+            toggleLanguageButton.textContent = 'Switch to Amharic';
+            } 
+        else {
+            recognitionLanguage = 'am-ET';
+            toggleLanguageButton.textContent = 'Switch to English';
+            }
+
+        if (recognition !== null) {
+            recognition.lang = recognitionLanguage;
+            }
+        }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>

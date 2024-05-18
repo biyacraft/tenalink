@@ -62,11 +62,13 @@ let handledUserJoined = async (user, mediaType) =>{
         document.getElementById("video-streams").insertAdjacentHTML("beforeend", player)
 
         user.videoTrack.play(`user-${user.uid}`)
-       user.audioTrack.play()
+        user.audioTrack.play()
 
-        if (mediaType === 'audio'){
-            user.audioTrack.play()
-        }
+        
+    }
+
+    if (mediaType === 'audio'){
+        user.audioTrack.play()
     }
 }
 

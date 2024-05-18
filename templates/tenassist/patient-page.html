@@ -39,7 +39,7 @@ Patient
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://127.0.0.1:8000/recommend/interview0">
+            <a class="nav-link collapsed" href="http://127.0.0.1:8000/recommend/predict">
                 <i class="bi bi-chat-right-quote"></i>
                 <span>Recommendation</span>
             </a>
@@ -164,7 +164,7 @@ medical-history
                             <option value="General Physician">General Physician</option>
                             <option value="Orthopedist">Orthopedist</option>
                             <option value="Gynaecologist">Gynaecologist</option>
-                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Pediatrician">Pediatrician</option>
                             <option value="Psychologist">Psychologist</option>
                         </select>
                     </div>
@@ -289,9 +289,9 @@ medical-history
     {% if medical_histories %}
         <link rel="stylesheet" href="{% static 'land/assets/css/style.css' %}">
         <script src="{% static 'land/assets/js/script.js' %}"></script>
-        <div id="chatIcon-2" class="chat-icon-2" title="Train Data">
+        <!--<div id="chatIcon-2" class="chat-icon-2" title="Train Data">
             <img src="{% static 'land/assets/images/settings.png' %}" alt="Support Chat" class="icon">
-        </div>
+        </div> -->
     {% endif %}
 
 <div class="row">

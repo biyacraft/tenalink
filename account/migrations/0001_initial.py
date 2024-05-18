@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('password', models.CharField(max_length=100)),
                 ('address', models.CharField(max_length=100)),
                 ('date_of_birth', models.DateField(blank=True, null=True)),
-                ('specialization', models.CharField(choices=[('Dermatologist', 'Dermatologist'), ('Dentist', 'Dentist'), ('Sexologist', 'Sexologist'), ('Dietitian/Nutritionist', 'Dietitian/Nutritionist'), ('General Physician', 'General Physician'), ('Orthopedist', 'Orthopedist'), ('Gynaecologist', 'Gynaecologist'), ('Pediatrics', 'Pediatrics'), ('Psychologist', 'Psychologist')], max_length=100)),
+                ('specialization', models.CharField(choices=[('Dermatologist', 'Dermatologist'), ('Dentist', 'Dentist'), ('Sexologist', 'Sexologist'), ('Dietitian/Nutritionist', 'Dietitian/Nutritionist'), ('General Physician', 'General Physician'), ('Orthopedist', 'Orthopedist'), ('Gynaecologist', 'Gynaecologist'), ('Pediatrician', 'Pediatrician'), ('Psychologist', 'Psychologist')], max_length=100)),
                 ('document', models.FileField(upload_to='doctor_document')),
                 ('photo', models.ImageField(blank=True, default='user_avatar.png', upload_to='doctor_photo')),
                 ('is_verified', models.BooleanField(default=False)),
