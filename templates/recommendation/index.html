@@ -20,6 +20,12 @@
     <link rel="stylesheet" href="{% static 'land/assets/css/animated.css' %}">
     <link rel="stylesheet" href="{% static 'land/assets/css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'land/assets/css/style.css' %}">
+    
+
+    <link href="{% static 'asset/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'asset/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'asset/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link href="{% static 'asset/assets/css/main.css' %}" rel="stylesheet">
   </head>
 
 <body>
@@ -40,31 +46,53 @@
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-
+<!--
 
   <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <nav class="main-nav" style="display: flex; align-items: center; justify-content: space-between;">
-            <!-- ***** Logo Start ***** -->
+           
             <a href="" class="logo" style="display: flex; align-items: center; justify-content: center;">
               <img src="{% static 'land/assets/images/logo-full.svg' %}" alt="logo" style="width: 150; height: 50;">
-              <!--<h2 class="p-4" >Tenalink</h2> -->
+             
             </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
+          
             <ul class="nav">
-              <!-- *****  ***** -->
+             
               <li><div ><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i>  SignUp</a></div></li> 
-              <li><div ><a id="modal_trigger" href="{% url 'account:login'%}"><i class="fa fa-sign-in-alt"></i> Login</a></div></li>
+              <li><div ><a id="modal_trigger" href="{% url 'account:login'%}">
+              <i class="fa fa-sign-in-alt"></i> Login</a></div></li>
           </nav>
         </div>
       </div>
     </div>
+  </header> -->
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="#" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'land/assets/images/logo-full.svg' %}" alt="" width="100" height="50">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#" class="">Home</a></li>
+          <li><a href="#Features">Features</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a id="modal_trigger" href="{% url 'account:login'%}">Login</a></li>
+          <li><a id="modal_trigger" href="#modal">Signup</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#about">Get Started</a>
+
+    </div>
   </header>
-
-
   <!-- ***** Header Area End ***** -->
   
   <div id="modal" class="popupContainer" style="display:none;">
@@ -113,7 +141,7 @@
   </div>
 
 
-  <div id="services" class="services section">
+  <div id="Features" class="services section">
     
     <div class="container">
       <div class="row">
@@ -215,7 +243,7 @@
     </div>
   </div>
 
-  <section class="wrapper">
+  <section class="wrapper" id="about-us">
     <div class="container-fostrap">
         <div>
             <div class="p-4">

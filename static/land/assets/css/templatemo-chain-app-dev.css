@@ -1919,7 +1919,7 @@ responsive
 --------------------------------------------- 
 */
 
-
+/*
 
 @media (max-width: 1200px) {
   .header-area .main-nav .logo h4 {
@@ -1947,7 +1947,7 @@ responsive
   }
 }
 
-@media (max-width: 992px) {
+
   .header-area {
     background-color: #fff;
   }
@@ -1972,6 +1972,8 @@ responsive
   .header-area .main-nav .logo h4 {
     font-size: 20px;
   }
+  */
+  @media (max-width: 992px) {
   .main-banner .left-content {
     margin-right: 0px;
   }
