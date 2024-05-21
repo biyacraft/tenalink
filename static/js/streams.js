@@ -20,7 +20,7 @@ let joinAndDisplayLS = async () => {
     client.on('user-published', handledUserJoined)
     client.on('user-left', handledUserLeft)
     try{
-        await client.join(APP_ID, CHANNEL_NAME, TOKEN, UID)
+        UID = await  client.join(APP_ID, CHANNEL_NAME, TOKEN, UID)
     }catch(err){
         console.log("error", err)
         window.open("/chat/", "_self")

@@ -1,7 +1,19 @@
 {% load static %}
 <main>
-    <style>
-    #video-streams{
+<style>
+#form-container{
+    width: 400px;
+    box-shadow:var(--shaddow);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+#video-streams{
     display: flex;
     flex-wrap: wrap;
     height: 85vh;
@@ -19,29 +31,31 @@
     margin: 2px;
     background-color: rgba(198,202,219,1);
 }
-    </style>
-    <section id="room-name-wrapper">
-        <p >Room Name: <span id="room-name"></span></p>
-    </section>
+</style>
+<section id="room-name-wrapper">
+    <p >Room Name: <span id="room-name"></span></p>
+</section>
+<div id="video-streams">
 
-    <section id="video-streams">
-        <div class="video-container" id="user-container-1"> 
-            <div class="video-player" id="user-1"></div>
-        </div>
-    </section>
-    <section id="controls-wrapper">
-            <div class="icon-wrapper">
-                <img class="control-icon" id="mic-btn" src="{% static 'images/mic.svg' %}" />
-            </div>
+    <div class="video-container" id="user-container-1">
+        <div class="video-player" id="user-1"></div> 
+        <div class="username-wrapper"><span class="user-name"></span></div>
+    </div>
+</div>
 
-            <div class="icon-wrapper">
-                <img class="control-icon" id="camera-btn" src="{% static 'images/video.svg' %}" />
-            </div>
+<section id="controls-wrapper">
+    <div class="icon-wrapper">
+        <img class="control-icon" id="mic-btn" src="{% static 'images/mic.svg' %}" />
+    </div>
 
-            <div class="icon-wrapper">
-                <img class="control-icon" id="leave-btn" src="{% static 'images/leave.svg'%}" />
-            </div>
-        </section>
+    <div class="icon-wrapper">
+        <img class="control-icon" id="camera-btn" src="{% static 'images/video.svg' %}" />
+    </div>
+
+    <div class="icon-wrapper">
+        <img class="control-icon" id="leave-btn" src="{% static 'images/leave.svg'%}" />
+    </div>
+</section>
 </main>
 <script src="{% static 'js/AgoraRTC_N-4.14.0.js' %}"></script>
 <script src="{% static 'js/streams.js' %}"></script>
