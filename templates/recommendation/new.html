@@ -37,7 +37,7 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="#" class="logo d-flex align-items-center me-auto">
-        <img src="{% static 'land/assets/images/logo-full.svg' %}" alt="" width="100" height="50">
+        <img src="{% static 'asset/assets/image.png' %}" alt="" width="100" height="50">
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -67,7 +67,7 @@
             <p class="">Our Recommendation Algorthim is for test only</p>
             <div class="d-flex">
               <a href="#about" class="btn-get-started">Get Started</a>
-              <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Demo</span></a>
+              <a href="https://youtu.be/sQxvGtyA9fk" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Demo</span></a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
@@ -88,7 +88,7 @@
           <div class="container mt-5">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-md-8 col-lg-10">
-                  <form action="/recommend/predict" method="post">
+                  <form id="myform" action="/recommend/predict" method="post">
                     {% csrf_token %}
                     
                     <div class="form-group">   
@@ -112,18 +112,24 @@
                 </div>
                   <br>
                   </form>
+                <!--  <script>
+                    document.getElementById("myform").addEventListener("submit", function(event) {
+                      event.preventDefault(); 
+                      document.getElementById("services").scrollIntoView({ behavior: "smooth" });
+                    });
+                  </script> -->
                 </div>
             </div>
         </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
             <h3>Sample Symptoms</h3>
-            <p class="fst-italic"> high_fever, nausea, skin_rash, yellowish_skin, itching, mild_fever, vomiting, fatigue,
+            <p class="fst-italic"> nausea, skin_rash, yellowish_skin, itching, mild_fever, vomiting, fatigue,
            abnormal_menstruation, muscle_weakness, indigestion, joint_pain, yellowing_of_eyes, headache,
            blurred_and_distorted_vision, continuous_feel_of_urine, prominent_veins_on_calf, sweating,
            altered_sensorium, lack_of_concentration, neck_pain, abdominal_pain, irritation_in_anus, chills,
            shivering, sunken_eyes, breathlessness, hip_joint_pain, cough, ulcers_on_tongue, dark_urine,
            loss_of_appetite, weight_loss, irregular_sugar_level, malaise', rusty_sputum, chest_pain,
-           mucoid_sputum, diarrhoea, family_history, phlegm, muscle_pain, congestion, patches_in_throat,
+           mucoid_sputum, diarrhoea, family_history, phlegm, muscle_pain, high_fever, congestion, patches_in_throat,
            loss_of_balance, unsteadiness, stomach_pain, spotting_ urination, dizziness, dischromic _patches,
            inflammatory_nails, acidity, stiff_neck, extra_marital_contacts, red_sore_around_nose, anxiety,
            scurring, burning_micturition, toxic_look_(typhos), dehydration, blackheads,
@@ -164,42 +170,45 @@
 
           <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href="service-details.html" class="stretched-link">Disease</a></h4>
+              <div class=""><img src="{% static 'land/assets/images/disease.png' %}" alt="" style="width: 30%;"></div>
+              <h4 class="stretched-link">Disease</h4>
               <p>{{ predicted_disease }}</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+              <div class=""><img src="{% static 'land/assets/images/info.png' %}" alt="" style="width: 30%;"></div>
               <h4 class="stretched-link">Description</h4>
-              <p>{{ dis_des }}</p>
+              <p style="font-size: 20px;">{{ dis_des }}</p>
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+
+          <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+              <div class=""><img src="{% static 'land/assets/images/precautions.png' %}" alt="" style="width: 30%;"></div>
               <h4 class="stretched-link">Precautions</h4>
               <p>
                 <ul>
                 {% for i in my_precautions %}
-                   <li>- {{ i }}</li>
+                   <p>- {{ i }}</p>
                 {% endfor %}
                 </ul>
               </p>
             </div>
-          </div><!-- End Service Item -->
+          </div>
+
+          <!-- End Service Item -->
 
           <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+              <div class=""><img src="{% static 'land/assets/images/workouts.png' %}" alt="" style="width: 30%;"></div>
               <h4 class="stretched-link">Workouts</h4>
               <div class="modal-body">
                 <ul>
                     {% for i in workout %}
-                        <li>{{ i }}</li>
+                        <p>{{ i }}</p>
                     {% endfor %}
                 </ul>
             </div>
@@ -208,13 +217,32 @@
           
           <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+              <div class=""><img src="{% static 'land/assets/images/medication.png' %}" alt="" style="width: 30%;"></div>
               <h4 class="stretched-link">Medications</h4>
               <div class="modal-body">
                 <ul>
                     {% for i in medications %}
-                        <li>{{ i }}</li>
+                        <p>{{ i }}</p>
                     {% endfor %}
+                </ul>
+            </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class=""><img src="{% static 'land/assets/images/food.png' %}" alt="" style="width: 30%;"></div>
+              <h4 class="stretched-link">Diets</h4>
+              <div class="modal-body">
+                <ul>
+                  {% for i in my_diet %}
+                    <p>{{ i }}</p>
+                    <ul>
+                      {% for j in i.values %}
+                        <p>{{ j }}</p>
+                      {% endfor %}
+                    </ul>
+                  {% endfor %}
                 </ul>
             </div>
             </div>
@@ -269,10 +297,6 @@
     </style>
 <!-- main form of page -->
 
-
-
-
-
 <!-- Disease Modal -->
     <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -303,6 +327,88 @@
             </div>
         </div>
     </div>
+    
+<!-- Precaution Modal -->
+
+<div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" style="background-color: #020606; color:white;">
+              <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <ul>
+                  {% for i in my_precautions %}
+                      <li>{{ i }}</li>
+                  {% endfor %}
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- Medications Modal -->
+<div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" style="background-color: #020606; color:white;">
+              <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <ul>
+                  {% for i in medications %}
+                      <li>{{ i }}</li>
+                  {% endfor %}
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- Workouts Modal -->
+<div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+      <div class="modal-content">
+          <div class="modal-header" style="background-color: #020606; color:white;">
+              <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <ul>
+                  {% for i in workout %}
+                      <li>{{ i }}</li>
+                  {% endfor %}
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Diets Modal -->
+<div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" style="background-color: #020606; color:white;">
+              <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <ul>
+                  {% for i in my_diet %}
+                      <li>{{ i }}</li>
+                  {% endfor %}
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>
+
     <style>
         ul {
           margin: 0px;
@@ -579,86 +685,6 @@
               </div>
           </div>
       </footer>
-
-<!-- Precaution Modal -->
-
-    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in my_precautions %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <!-- Medications Modal -->
-    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in medications %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Workouts Modal -->
-    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
-        <div class="modal-dialog" >
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in workout %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Diets Modal -->
-    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in my_diet %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

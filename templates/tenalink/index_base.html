@@ -8,7 +8,7 @@
     <title>{% block title %} {% endblock %}| Tenalink</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-
+    <link href="{% static 'asset/assets/image.png' %}" rel="icon">
     <!-- Favicons -->
     <link href="{% static 'assets/img/post.jpg' %}" rel="icon">
 
@@ -27,6 +27,22 @@
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 </head>
 
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="#" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'land/assets/images/logo-full.svg' %}" alt="" width="100" height="50">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="{% url 'account:home_page'%}">Home</a>
+
+    </div>
+  </header>
 <body class="toggle-sidebar" onload="post_none()">
 <div class="page-wrapper ">
     {% if messages %}

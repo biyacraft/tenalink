@@ -59,12 +59,11 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#about-us">About Us</a></li>
           <li><a id="modal_trigger" href="{% url 'account:login'%}">Login</a></li>
-          <li><a id="modal_trigger" href="#modal">Signup</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="#about">Get Started</a>
+      <a class="btn-getstarted" href="recommend/predict">Recommend Me</a>
 
     </div>
   </header>
@@ -98,8 +97,8 @@
                   </div> 
                   <div class="col-lg-12 ">
                     <div class="white-button first-button scroll-to-section">
-                      <a href="recommend/predict">Recommendation <i class="fab fa-star text-center text-bold"></i></a>
-                      <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Demo</span></a>
+                      <a href="recommend/predict">Recommendation<i class="fa-solid fa-braille"></i></a>
+                      <a href="https://youtu.be/sQxvGtyA9fk" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Demo</span></a>
                     </div>
                   </div>
                 </div>
@@ -126,8 +125,8 @@
         </div>
         
         <div class="col-lg-3">
-          <div class="service-item first-service">
-            <div class="icon"></div>
+          <div class="service-item">
+            <div class=""> <img src="{% static 'land/assets/images/recommend.png' %}" alt="" style="width: 30%;"></div>
             <h4>Recommendation Algorthim</h4>
             <p>Our platform uses AI to connect patients with specialized 
               doctors based on their symptoms.</p>
@@ -138,8 +137,8 @@
         </div>
 
         <div class="col-lg-3">
-          <div class="service-item second-service">
-            <div class="icon"></div>
+          <div class="service-item ">
+            <div class=""><img src="{% static 'land/assets/images/videochat.png' %}" alt="" style="width: 30%;"></div>
             <h4>Audio &amp; Video Chat</h4>
             <p>Our platform facilitates video and audio consultations between patients and doctors.</p>
             <div class="text-button"><br>
@@ -148,8 +147,8 @@
           </div>
         </div>
         <div class="col-lg-3">
-          <div class="service-item third-service">
-            <div class="icon"></div>
+          <div class="service-item">
+            <div class=""><img src="{% static 'land/assets/images/livedata.png' %}" alt="" style="width: 30%;"></div>
             <h4>Live Patient Data</h4> <p>Patients data will be displayed to a doctor remotely. OnlyPatients data will be displayed to a doctor only</p>
             <div class="text-button"><br>
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
@@ -157,8 +156,8 @@
           </div>
         </div>
         <div class="col-lg-3">
-          <div class="service-item third-service">
-            <div class="icon"></div>
+          <div class="service-item ">
+            <div class=""><img src="{% static 'land/assets/images/appointment.png' %}" alt="" style="width: 30%;"></div>
             <h4>Appointment, Search &amp; Many More</h4> 
             <p>Features like book appointment, search Doctors, give feedback, rate Doctors, give prescription and write Medical history.
             </p>
@@ -183,11 +182,10 @@
         </div>
         
         <div class="col-lg-4">
-          <div class="service-item first-service">
-            <div class="icon"></div>
-            <h4>Tele Medicine </h4>
-            <p>Our platform uses AI to connect patients with specialized 
-              doctors based on their symptoms.</p>
+          <div class="service-item ">
+            <div class=""><img src="{% static 'land/assets/images/consult.png' %}" alt="" style="width: 30%;"></div>
+            <h4>Remote Consultations</h4>
+            <p>FacilitateS virtual consultations between patients and Doctors. These consultations can take place via video or audio meeting</p>
             <div class="text-button">
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
             </div>
@@ -195,9 +193,9 @@
         </div>
 
         <div class="col-lg-4">
-          <div class="service-item second-service">
-            <div class="icon"></div>
-            <h4>Consultation</h4>
+          <div class="service-item ">
+            <div class=""><img src="{% static 'land/assets/images/moniterng.png' %}" alt="" style="width: 20%;"></div>
+            <h4>Health Monitoring</h4>
             <p>Our platform facilitates video and audio consultations between patients and doctors.</p>
             <div class="text-button"><br>
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
@@ -205,9 +203,9 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="service-item third-service">
-            <div class="icon"></div>
-            <h4>Recommendation</h4> 
+          <div class="service-item">
+            <div class=""><img src="{% static 'land/assets/images/diagonosis.png' %}" alt="" style="width: 30%;"></div>
+            <h4>Medical Diagnoses</h4> 
             <p>displayed to a doctor onlyPatients data will be displayed to a doctor only</p>
             <div class="text-button"><br>
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
