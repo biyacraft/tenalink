@@ -37,21 +37,20 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="#" class="logo d-flex align-items-center me-auto">
-        <img src="{% static 'asset/assets/image.png' %}" alt="" width="100" height="50">
+        <img src="{% static 'land/assets/images/logo-full.png' %}" alt="" style="width: max-content;">
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="" style="color: #04A7C3;">Home</a></li>
-          <li><a href="#about" style="color: #04A7C3;">About</a></li>
-          <li><a href="#contact" style="color: #04A7C3;"> Contact</a></li>
-          <li><a href="#team" style="color: #04A7C3;">Login</a></li>
-          <li><a href="#pricing" >Signup</a></li>
+          <li><a href="#footer" style="color: #04A7C3;"> Contact</a></li>
+          <li><a href="{% url 'account:login'%}" style="color: #04A7C3;">Login</a></li>
+          <li><a href="{% url 'account:register-patient' 'index' %}" >Signup</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="#about">Get Started</a>
+      <a class="btn-getstarted" href="#skills">Get Started</a>
 
     </div>
   </header>
@@ -66,7 +65,7 @@
             <h1 class="">Disease Prediction and Recommendation Using ML</h1>
             <p class="">Our Recommendation Algorthim is for test only</p>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Get Started</a>
+              <a href="#skills" class="btn-get-started">Get Started</a>
               <a href="https://youtu.be/sQxvGtyA9fk" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Demo</span></a>
             </div>
           </div>
@@ -91,9 +90,11 @@
                   <form id="myform" action="/recommend/predict" method="post">
                     {% csrf_token %}
                     
-                    <div class="form-group">   
-                        <h2>Select Symptoms</h2>
-                        <input type="text" class="form-control my-4", id="symptoms" name="symptoms" placeholder="sleeping, weight_loss, aching etc">
+                    <div class="form-group"> 
+                      <div class="col-lg-6 pt-4 pt-lg-0 content">
+                        <h3 class="text-nowrap">Select Symptoms</h3>
+                        </div>
+                        <input contenteditable="true" type="text" class="form-control my-4" style="height: 100px; resize: both; white-space: pre-wrap; display: block;" id="symptoms" name="symptoms" placeholder="sleeping, weight_loss, aching etc">
                     </div>
                     <!-- Display the transcribed text here -->
                
@@ -102,7 +103,7 @@
                     <a href="#services">Go to Results</a>
                     <br>
                     <button type="button" id="startSpeechRecognition" class="" style="border: none;">
-                      <img src="{% static 'asset/assets/img/mic.svg' %}" width="60" height="60">
+                      <img src="{% static 'images/mic.png' %}" style="width: 50%;">
                   </button>
                   <div name="mysysms" id="transcription">
             
@@ -123,8 +124,9 @@
         </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
             <h3>Sample Symptoms</h3>
-            <p class="fst-italic"> nausea, skin_rash, yellowish_skin, itching, mild_fever, vomiting, fatigue,
-           abnormal_menstruation, muscle_weakness, indigestion, joint_pain, yellowing_of_eyes, headache,
+            <p class="fst-italic">
+              
+          nausea, skin_rash, yellowish_skin, itching, mild_fever, vomiting, fatigue, abnormal_menstruation, muscle_weakness, indigestion, joint_pain, yellowing_of_eyes, headache,
            blurred_and_distorted_vision, continuous_feel_of_urine, prominent_veins_on_calf, sweating,
            altered_sensorium, lack_of_concentration, neck_pain, abdominal_pain, irritation_in_anus, chills,
            shivering, sunken_eyes, breathlessness, hip_joint_pain, cough, ulcers_on_tongue, dark_urine,
@@ -150,7 +152,6 @@
            runny_nose </p>
           </div>
         </div>
-
       </div>
 
     </section><!-- /Skills Section -->
@@ -172,7 +173,7 @@
             <div class="service-item position-relative">
               <div class=""><img src="{% static 'land/assets/images/disease.png' %}" alt="" style="width: 30%;"></div>
               <h4 class="stretched-link">Disease</h4>
-              <p>{{ predicted_disease }}</p>
+              <p style="font-size: 20px;">{{ predicted_disease }}</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -192,7 +193,7 @@
               <p>
                 <ul>
                 {% for i in my_precautions %}
-                   <p>- {{ i }}</p>
+                   <p style="font-size: 20px;">- {{ i }}</p>
                 {% endfor %}
                 </ul>
               </p>
@@ -208,7 +209,7 @@
               <div class="modal-body">
                 <ul>
                     {% for i in workout %}
-                        <p>{{ i }}</p>
+                        <p style="font-size: 20px;">{{ i }}</p>
                     {% endfor %}
                 </ul>
             </div>
@@ -222,7 +223,7 @@
               <div class="modal-body">
                 <ul>
                     {% for i in medications %}
-                        <p>{{ i }}</p>
+                        <p style="font-size: 20px;">{{ i }}</p>
                     {% endfor %}
                 </ul>
             </div>
@@ -236,12 +237,8 @@
               <div class="modal-body">
                 <ul>
                   {% for i in my_diet %}
-                    <p>{{ i }}</p>
-                    <ul>
-                      {% for j in i.values %}
-                        <p>{{ j }}</p>
-                      {% endfor %}
-                    </ul>
+                    <p style="font-size: 20px;">{{ i }}</p>
+                    
                   {% endfor %}
                 </ul>
             </div>
@@ -572,7 +569,7 @@
       }
       </style>
       
-        <footer class="footer-section mt--5">
+        <footer class="footer-section mt--5" id="footer">
           <div class="container">
               <div class="footer-cta pt-5 pb-5">
                   <div class="row">

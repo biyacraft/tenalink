@@ -8,14 +8,12 @@ Doctor
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}">
                 <i class="bi bi-menu-app"></i>
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
-
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=working_day">
                 <i class="bi bi-calendar-check"></i></i><span>Working Day</span>
@@ -42,7 +40,6 @@ Doctor
             </a>
         </li>
     </ul>
-
 </aside><!-- End Sidebar-->
 {% endblock %}
 
@@ -88,40 +85,23 @@ view_rate
                 </div>
                 <div class="col-12">
                     <label for="floatingTextarea" class="form-label">Free Time</label>
-                    <textarea class="form-control" name="date-input" placeholder="Address" required
+                    <textarea class="form-control" name="date-input" placeholder="H-H:D or H-H:N" required
                               id="floatingTextarea"
                               style="height: 100px;"></textarea>
                 </div>
-
                 <div class="float-end col-4">
                     <input type="submit" name="fill_date" value="ADD" class="form-control btn btn-primary">
                 </div>
             </form>
         </div>
         <div class="card p-5">
-            <h5 class="card-title">How to fill my work day?</h5>
+            <h5 class="card-title">Fill in this format:</h5>
+            <p>4-6:d => meaning from 4:00 to 6:00 in the morning</p>
+            <p>1-4:n => meaning from 1:00 to 4:00 at night</p>
+            <p>4-6:d, 1-4:d => meaning from 4:00 to 6:00 in the morning and 1:00 to 4:00 at night</p>
             <p>
-                Fill in only the initial or specific date if your schedule is different for particular date,
-                and then fill in the free time in the text area.
+              Use commas to separate the different time slots, eg. 3-5:d,10-12:d,7-8:N
             </p>
-            <p>
-                Fill in the start and end dates if your schedule is the same for the range of dates,
-                and then fill in the free time in the text box.
-            </p>
-            <p>
-                Use the suggested format: <span style="font-family:monospace; color:red;font-size:19px">Start-time - end-time:d|n.</span><br>
-                <span style="font-family:monospace; color:red;font-size:19px">Note:</span> don't use minute here and
-                both n and d are case-insensitive.
-                <br><br>
-                3-5:d -> from morning 3:00 to 5:00, d-> refers to day, n->for night <br>
-                10-12:d -> from 10:00 to 12:00, in afternoon <br>
-                7-8:N -> from 7:00 to 8:00, in Night <br>
-
-            </p>
-            <p>
-                Please use commas to separate the different time slots, eg. 3-5:d,10-12:d,7-8:N
-            </p>
-
         </div>
     </div>
 </div>

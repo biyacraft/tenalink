@@ -38,6 +38,13 @@ Patient
                 <i class="bi bi-chat-right-dots"></i><span>Prescription History</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard:patient-dashboard' %}?pages=patient_data_now">
+                <i class="bi bi-chat-right-dots"></i><span>My Data now</span>
+            </a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://127.0.0.1:8000/recommend/predict">
                 <i class="bi bi-chat-right-quote"></i>
@@ -71,8 +78,9 @@ search for doctor
 {% elif page == 'write_feedback' %}
     write_feedback
 {% elif page == 'medical_history' %}
-medical-history
+    medical-history
 {% endif %}
+
 {% endblock %}
 
 {% block middle %}
@@ -81,7 +89,7 @@ medical-history
 <!-- Start book -->
 <div class="row contact justify-content-center">
     <div class="col-xl-8">
-        <p class="text-center card-title">book doctor here.</p>
+        <h5 class="card-title">Book Doctors</h5>
         <div class="card p-4">
             <form class="row g-3" action="" method="get">
                 <input type="hidden" name="pages" value="book">
@@ -138,7 +146,7 @@ medical-history
 <!-- Start of Search -->
 <div class="row contact justify-content-center">
     <div class="col-xl-8">
-        <p class="text-center small">Filter and search doctor here.</p>
+        <h5 class="card-title">Search Doctors</h5>
         <div class="card p-4">
             <form action="" method="post">
                 {% csrf_token %}
@@ -243,18 +251,19 @@ medical-history
 <!-- Start of feedback -->
 <div class="row contact justify-content-center">
     <div class="col-xl-6">
-        <h5 class="card-title text-center pb-0 fs-4">Please leave your feadback</h5>
-        <p class="text-center small">Enter your email & subject to submit</p>
+        <h5 class="card-title">Leave your feadback</h5>
         <div class="card p-4">
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="row gy-4">
 
                     <div class="col-md-6">
+                        <label for="">Name</label>
                         <input type="text" name="name" class="form-control" value="{{user.first_name}}">
                     </div>
 
                     <div class="col-md-6 ">
+                        <label for="">Email</label>
                         <input type="email" class="form-control" name="email" value="{{user.email}}" required>
                     </div>
 
@@ -297,10 +306,7 @@ medical-history
 <div class="row">
     <div class="col-lg-9">
         <h5 class="card-title">Medical History</h5>
-        <div class="card-title">Current Condition Status</div>
-        <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-        <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864512"></iframe>
-        <iframe width="450" height="260" style="border: 3px solid #04A7C3; color: #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864616"></iframe>
+        
         {% for history in medical_histories %}
             <div class="card mb-3">
                 <div class="card-body pt-3">
@@ -315,6 +321,31 @@ medical-history
     </div>
 </div>
 <!-- end view Medical History -->
+
+
+{% elif page == 'patient_data_now' %}
+<!-- start of live Patient data -->
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="card-title">My data now</h5>
+        
+        <div class="d-flex mx-4">
+        <div class="row p-4">
+            <div class="card-title align-items-center justify-content-center">Temprature</div>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864512"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3; color: #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864616"></iframe>    
+        </div>
+        <div class="row p-4">
+            <div class="card-title align-items-center justify-content-center">ECG</div>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864512"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3; color: #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864616"></iframe>    
+        </div>
+    </div>
+       </div>
+</div>
+
 {% elif page == 'prescriptions' %}
     {% if prescriptions %}
         <link rel="stylesheet" href="{% static 'land/assets/css/style.css' %}">

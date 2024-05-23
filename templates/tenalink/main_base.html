@@ -178,17 +178,6 @@
 </aside>
 <main id="main" class="main">
 
-    <div class="pagetitle">
-        <h1>{% block header %} {% endblock %}</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item">{% block middle_breadcrumb %}{% endblock %}</li>
-                <li class="breadcrumb-item active">{% block active_breadcrumb %}{% endblock %}</li>
-            </ol>
-        </nav>
-    </div><!-- End Page Title -->
-
     <section class="section">
         {% block middle %}{% endblock %}
     </section>

@@ -35,6 +35,21 @@
 <section id="room-name-wrapper">
     <p >Room Name: <span id="room-name"></span></p>
 </section>
+<section id="controls-wrapper">
+    <div class="d-flex mb-10">
+        <div class="icon-wrapper p-3">
+            <img class="control-icon" style="width: 10%;"  id="mic-btn" src="{% static 'images/mic.png' %}" />
+        </div>
+    
+        <div class="icon-wrapper p-3">
+            <img class="control-icon" style="width: 10%;" id="camera-btn" src="{% static 'images/video.png' %}" />
+        </div>
+        <div class="icon-wrapper p-3">
+            <img class="control-icon" style="width: 10%;"  id="leave-btn" src="{% static 'images/leave.png'%}" />
+        </div>
+    </div>
+
+</section>
 <div id="video-streams">
 
     <div class="video-container" id="user-container-1">
@@ -43,19 +58,7 @@
     </div>
 </div>
 
-<section id="controls-wrapper">
-    <div class="icon-wrapper">
-        <img class="control-icon" id="mic-btn" src="{% static 'images/mic.svg' %}" />
-    </div>
 
-    <div class="icon-wrapper">
-        <img class="control-icon" id="camera-btn" src="{% static 'images/video.svg' %}" />
-    </div>
-
-    <div class="icon-wrapper">
-        <img class="control-icon" id="leave-btn" src="{% static 'images/leave.svg'%}" />
-    </div>
-</section>
 </main>
 <script src="{% static 'js/AgoraRTC_N-4.14.0.js' %}"></script>
 <script src="{% static 'js/streams.js' %}"></script>
