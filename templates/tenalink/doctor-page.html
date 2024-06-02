@@ -25,6 +25,11 @@ Doctor
                 <span>View Rate</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=patient_data_now">
+                <i class="bi bi-bullseye"></i><span>Watch Real Time</span>
+            </a>
+        </li>
         {% if not user.is_verified %}
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:doctor-dashboard' %}?pages=call_admin">
@@ -156,6 +161,28 @@ view_rate
             </div>
         </div>
     </div>
+</div>
+{% elif page == 'patient_data_now' %}
+<!-- start of live Patient data -->
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="card-title">My data now</h5>
+        
+        <div class="d-flex mx-4">
+        <div class="row p-4">
+            <div class="card-title align-items-center justify-content-center">Temprature</div>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864512"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3; color: #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864616"></iframe>    
+        </div>
+        <div class="row p-4">
+            <div class="card-title align-items-center justify-content-center">ECG</div>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=ECG&type=line&xaxis=Time&yaxis=ECG&yaxismax=1000&yaxismin=0"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/873522"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" color: #04A7C3; src="https://thingspeak.com/channels/2539929/widgets/873523"></iframe>    
+        </div>
+    </div>
+       </div>
 </div>
 {% elif page == 'view_rate' %}
 <!-- start of view Rate -->

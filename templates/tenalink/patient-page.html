@@ -35,19 +35,19 @@ Patient
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:patient-dashboard' %}?pages=prescriptions">
-                <i class="bi bi-chat-right-dots"></i><span>Prescription History</span>
+                <i class="bi bi-speedometer2"></i><span>Prescription History</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard:patient-dashboard' %}?pages=patient_data_now">
-                <i class="bi bi-chat-right-dots"></i><span>My Data now</span>
+                <i class="bi bi-bullseye"></i><span>Watch Real Time</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://127.0.0.1:8000/recommend/predict">
-                <i class="bi bi-chat-right-quote"></i>
+                <i class="bi bi-dice-4"></i>
                 <span>Recommendation</span>
             </a>
         </li>
@@ -338,9 +338,9 @@ search for doctor
         </div>
         <div class="row p-4">
             <div class="card-title align-items-center justify-content-center">ECG</div>
-            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864512"></iframe>
-            <iframe width="450" height="260" style="border: 3px solid #04A7C3; color: #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/864616"></iframe>    
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=ECG&type=line&xaxis=Time&yaxis=ECG&yaxismax=1000&yaxismin=0"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" src="https://thingspeak.com/channels/2539929/widgets/873522"></iframe>
+            <iframe width="450" height="260" style="border: 3px solid #04A7C3;" color: #04A7C3; src="https://thingspeak.com/channels/2539929/widgets/873523"></iframe>    
         </div>
     </div>
        </div>
