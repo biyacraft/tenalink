@@ -7,7 +7,12 @@ SECRET_KEY = 'django-insecure-5tzupl#d@sea(h7c@@=x$876qo*$0(3_u3unb@&%!$9a4dxb30
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app',]
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '5303-196-191-116-129.ngrok-free.app',
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
