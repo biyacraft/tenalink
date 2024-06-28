@@ -18,6 +18,7 @@ def login(request):
     fg = 'admin'
     rvk = request.GET.get("revoke")
 
+    
     if request.method == "POST":
         if request.POST.get('email_field') is not None:
             em = request.POST.get('email')

@@ -13,6 +13,9 @@ ALLOWED_HOSTS = [
     '5303-196-191-116-129.ngrok-free.app',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://5303-196-191-116-129.ngrok-free.app'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'Tenalink.urls'
