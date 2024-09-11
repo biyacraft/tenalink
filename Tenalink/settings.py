@@ -10,11 +10,12 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '5303-196-191-116-129.ngrok-free.app',
+    'da87-102-218-51-253.ngrok-free.app',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://5303-196-191-116-129.ngrok-free.app'
+    'https://da87-102-218-51-253.ngrok-free.app/',
+
 ]
 
 INSTALLED_APPS = [
@@ -25,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'payment',
     'account',
     'dashboard',
     'appointment',

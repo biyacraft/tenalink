@@ -28,7 +28,7 @@ class Doctor(models.Model):
         ('Dietitian/Nutritionist', 'Dietitian/Nutritionist'),
         ('General Physician', 'General Physician'),
         ('Orthopedist', 'Orthopedist'),
-        ('Gynaecologist', 'Gynaecologist'),
+        ('Gynecologist', 'Gynecologist'),
         ('Pediatrician', 'Pediatrician'),
         ('Psychologist', 'Psychologist'),
     ]

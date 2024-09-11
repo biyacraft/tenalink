@@ -7,7 +7,6 @@ from django.conf.urls.static import static
 app_name = 'tenalink'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('payment/', include('payment.urls')),
     path('chat/', include('webrtc.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('recommend/', include('recommendation.urls'), name="recommend"),
